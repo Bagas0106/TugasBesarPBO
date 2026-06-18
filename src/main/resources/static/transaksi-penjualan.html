@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Transaksi Penjualan - SIPART</title>
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="m-0 bg-[#f7f4f2] font-sans text-sm text-[#201a17] antialiased [&_button]:cursor-pointer">
+    <div class="app-shell sales-mode min-h-screen bg-[#f7f4f2] lg:grid lg:grid-cols-[236px_minmax(0,1fr)] xl:grid-cols-[210px_minmax(0,1fr)]">
+      
+    <aside class="sidebar flex flex-col border-r border-[#ead8cf] bg-white p-4 lg:sticky lg:top-0 lg:h-screen lg:px-[18px] lg:py-7">
+      <div class="brand mb-5 px-2 lg:mb-8">
+        <div class="brand-name text-[15px] font-black leading-none text-[#ff7800]">SIPART</div>
+        <div class="brand-role mt-1.5 text-xs text-[#6f625c]">Kasir</div>
+      </div>
+      <nav class="nav-list grid grid-cols-2 gap-2 sm:grid-cols-3 lg:flex lg:flex-col">
+        
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/dashboard">
+              <img src="assets/icons/Navigation/nav_dashboard.svg" alt="">
+              <span>Dashboard</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/produk-kategori">
+              <img src="assets/icons/Navigation/nav_produk_kategori.svg" alt="">
+              <span>Produk & Kategori</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/stock">
+              <img src="assets/icons/Navigation/nav_stock.svg" alt="">
+              <span>Stock</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/supplier">
+              <img src="assets/icons/Navigation/nav_supplier.svg" alt="">
+              <span>Supplier</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/transaksi-pembelian">
+              <img src="assets/icons/Navigation/nav_transaksi_pembelian.svg" alt="">
+              <span>Transaksi Pembelian</span>
+            </a>
+          
+            <a class="nav-item active flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5 bg-[#ff7800] text-[#2b1b11] shadow-sm hover:bg-[#ff7800] hover:text-[#2b1b11]" href="/transaksi-penjualan">
+              <img src="assets/icons/Transaksi%20Penjualan/transaksipenjualan.svg" alt="">
+              <span>Transaksi Penjualan</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/manajemen-user">
+              <img src="assets/icons/Navigation/nav_manajemen_user.svg" alt="">
+              <span>Manajemen User</span>
+            </a>
+          
+      </nav>
+      <div class="nav-spacer my-4 hidden h-px bg-[#ead8cf] lg:block"></div>
+      <a class="logout mt-3 flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline hover:bg-red-50 hover:text-red-700 lg:mt-auto [&_img]:h-5 [&_img]:w-5" href="#">
+        <img src="assets/icons/Transaksi%20Penjualan/logout.svg" alt="">
+        <span>Logout</span>
+      </a>
+    </aside>
+  
+      <main class="page-shell min-w-0">
+        
+    <header class="topbar sticky top-0 z-30 flex min-h-[72px] flex-col gap-3 border-b border-[#ead8cf] bg-white/95 px-4 py-3 backdrop-blur sm:flex-row sm:items-center sm:justify-between md:px-7">
+      <label class="search flex h-[42px] w-full items-center gap-3 rounded-lg border border-[#efc8b6] bg-[#fffaf7] px-3.5 text-[#7a6b64] sm:max-w-[520px] [&_img]:h-5 [&_img]:w-5 [&_input]:min-w-0 [&_input]:flex-1 [&_input]:border-0 [&_input]:bg-transparent [&_input]:outline-none">
+        <img src="assets/icons/Stock%2C%20Transaksi%20Pembelian/carisparepart.svg" alt="">
+        <input type="search" placeholder="Cari sparepart...">
+      </label>
+      <div class="profile flex items-center gap-3 self-end whitespace-nowrap sm:self-auto">
+        <div>
+          <div class="profile-name text-right text-sm font-bold">Raihan Haryo</div>
+          <div class="online flex items-center justify-end gap-1 text-[11px] text-[#6f625c]"><span class="online-dot h-2 w-2 rounded-full bg-green-600"></span>Online</div>
+        </div>
+        <div class="avatar grid h-[38px] w-[38px] place-items-center rounded-full border-2 border-[#d6a17b] bg-[#263544] text-[11px] font-black text-white shadow-sm" aria-label="Avatar Raihan Haryo">RH</div>
+      </div>
+    </header>
+  
+        
+    <div class="sales-content mx-auto w-full max-w-[1500px] p-4 sm:p-5">
+      <div class="sales-layout grid min-h-[calc(100vh-72px)] xl:grid-cols-[minmax(0,1fr)_350px]">
+        <section class="sales-main min-w-0 border-r border-[#ead8cf]">
+          <label class="search sales-search flex h-[42px] w-full items-center gap-3 rounded-lg border border-[#efc8b6] bg-[#fffaf7] px-3.5 text-[#7a6b64] sm:max-w-[520px] [&_img]:h-5 [&_img]:w-5 [&_input]:min-w-0 [&_input]:flex-1 [&_input]:border-0 [&_input]:bg-transparent [&_input]:outline-none max-w-none">
+            <img src="assets/icons/Stock%2C%20Transaksi%20Pembelian/carisparepart.svg" alt="">
+            <input type="search" placeholder="Cari sparepart berdasarkan nama atau kode SKU...">
+          </label>
+          <div class="tabs flex gap-2 overflow-x-auto py-3">
+            <button class="tab active whitespace-nowrap rounded-lg border border-[#ead8cf] bg-white px-4 py-2.5 text-xs font-bold text-[#6f625c] hover:bg-orange-50 border-[#ff7800] bg-[#ff7800] text-white">Semua Produk</button>
+            <button class="tab whitespace-nowrap rounded-lg border border-[#ead8cf] bg-white px-4 py-2.5 text-xs font-bold text-[#6f625c] hover:bg-orange-50">Oli & Pelumas</button>
+            <button class="tab whitespace-nowrap rounded-lg border border-[#ead8cf] bg-white px-4 py-2.5 text-xs font-bold text-[#6f625c] hover:bg-orange-50">Suku Cadang Mesin</button>
+            <button class="tab whitespace-nowrap rounded-lg border border-[#ead8cf] bg-white px-4 py-2.5 text-xs font-bold text-[#6f625c] hover:bg-orange-50">Kelistrikan</button>
+          </div>
+          <div class="product-grid grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+            
+              <article class="product-card flex min-h-[190px] flex-col rounded-lg border border-[#efc8b6] bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                <span class="stock-pill green mb-2 inline-flex w-fit rounded-full px-2 py-1 text-[10px] font-black bg-green-100 text-green-700">STOK: 50</span>
+                <div class="product-name-row justify-start flex items-center gap-3"><span class="product-icon-mini grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#f4efec] [&_img]:h-6 [&_img]:w-6"><img src="assets/icons/Produk%20%26%20Kategori/mesin.svg" alt=""></span><div><strong>Busi NGK Platinum</strong><div class="sku text-[10px] text-[#756862]">Rp 45.000</div></div></div>
+                <button class="primary-btn inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-[#ff7800] bg-[#ff7800] px-[18px] font-extrabold text-white shadow-[0_8px_18px_rgba(255,120,0,0.22)] transition hover:border-[#e56d00] hover:bg-[#e56d00] focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:cursor-not-allowed disabled:opacity-50">+ Tambah</button>
+              </article>
+            
+              <article class="product-card flex min-h-[190px] flex-col rounded-lg border border-[#efc8b6] bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                <span class="stock-pill red mb-2 inline-flex w-fit rounded-full px-2 py-1 text-[10px] font-black bg-red-100 text-red-700">STOK: 6</span>
+                <div class="product-name-row justify-start flex items-center gap-3"><span class="product-icon-mini grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#f4efec] [&_img]:h-6 [&_img]:w-6"><img src="assets/icons/Produk%20%26%20Kategori/oli.svg" alt=""></span><div><strong>Oli Castrol Power 1 1L</strong><div class="sku text-[10px] text-[#756862]">Rp 85.000</div></div></div>
+                <button class="primary-btn inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-[#ff7800] bg-[#ff7800] px-[18px] font-extrabold text-white shadow-[0_8px_18px_rgba(255,120,0,0.22)] transition hover:border-[#e56d00] hover:bg-[#e56d00] focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:cursor-not-allowed disabled:opacity-50">+ Tambah</button>
+              </article>
+            
+              <article class="product-card disabled flex min-h-[190px] flex-col rounded-lg border border-[#efc8b6] bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md opacity-50 grayscale">
+                <span class="stock-pill red mb-2 inline-flex w-fit rounded-full px-2 py-1 text-[10px] font-black bg-red-100 text-red-700">STOK: 0</span>
+                <div class="product-name-row justify-start flex items-center gap-3"><span class="product-icon-mini grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#f4efec] [&_img]:h-6 [&_img]:w-6"><img src="assets/icons/Transaksi%20Penjualan/barang.svg" alt=""></span><div><strong>Rantai DID Racing 428</strong><div class="sku text-[10px] text-[#756862]">Rp 210.000</div></div></div>
+                <button class="soft-btn inline-flex min-h-[38px] items-center justify-center gap-2 rounded-lg border border-[#f4d2bd] bg-[#fff0e6] px-3.5 font-bold text-[#b44f00] transition hover:bg-[#ffe3cf]">Habis</button>
+              </article>
+            
+              <article class="product-card flex min-h-[190px] flex-col rounded-lg border border-[#efc8b6] bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                <span class="stock-pill green mb-2 inline-flex w-fit rounded-full px-2 py-1 text-[10px] font-black bg-green-100 text-green-700">STOK: 12</span>
+                <div class="product-name-row justify-start flex items-center gap-3"><span class="product-icon-mini grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#f4efec] [&_img]:h-6 [&_img]:w-6"><img src="assets/icons/Produk%20%26%20Kategori/ban.svg" alt=""></span><div><strong>Piringan Cakram TDR</strong><div class="sku text-[10px] text-[#756862]">Rp 350.000</div></div></div>
+                <button class="primary-btn inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-[#ff7800] bg-[#ff7800] px-[18px] font-extrabold text-white shadow-[0_8px_18px_rgba(255,120,0,0.22)] transition hover:border-[#e56d00] hover:bg-[#e56d00] focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:cursor-not-allowed disabled:opacity-50">+ Tambah</button>
+              </article>
+            
+          </div>
+        </section>
+        <aside class="cart sticky top-[72px] flex max-h-[calc(100vh-72px)] min-h-[620px] flex-col bg-white">
+          <div class="cart-header toolbar-row border-b border-[#ead8cf] p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h3>Keranjang Belanja</h3>
+            <button class="danger-btn min-h-[34px] px-3 inline-flex min-h-[38px] items-center justify-center gap-2 rounded-lg bg-red-700 px-3.5 font-bold text-white transition hover:bg-red-800"><img src="assets/icons/Transaksi%20Penjualan/kosongkan.svg" alt="" class="button-icon h-5 w-5"> Kosongkan</button>
+          </div>
+          <div class="cart-body flex-1 overflow-y-auto p-4">
+            <div class="cart-item grid grid-cols-[1fr_auto] gap-3 border-b border-[#ead8cf] py-4">
+              <div class="flex items-center gap-3">
+                <span class="product-icon-mini grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#f4efec] [&_img]:h-6 [&_img]:w-6"><img src="assets/icons/Produk%20%26%20Kategori/mesin.svg" alt=""></span>
+                <div><strong>Busi NGK Platinum</strong><div class="sku text-[10px] text-[#756862]">Rp 45.000</div></div>
+              </div>
+              <div class="qty-control flex items-center gap-2"><button>-</button><strong>1</strong><button>+</button></div>
+            </div>
+          </div>
+          <div class="cart-footer border-t border-[#ead8cf] bg-[#fffaf7] p-4">
+            <div class="summary-row flex items-center justify-between gap-4 py-1.5 text-xs"><span>Subtotal</span><strong>Rp 45.000</strong></div>
+            <div class="summary-row flex items-center justify-between gap-4 py-1.5 text-xs"><span>Pajak (11%)</span><strong>Rp 4.950</strong></div>
+            <div class="summary-row total flex items-center justify-between gap-4 py-1.5 text-xs mt-2 border-t border-[#ead8cf] pt-3 text-sm font-black"><span>Grand Total</span><strong class="money-orange font-extrabold text-[#b44f00]">Rp 49.950</strong></div>
+            <p class="soft-label mt-6 text-[10px] font-black uppercase tracking-wide text-[#ff7800]">Metode Pembayaran</p>
+            <div class="payment-grid mt-3 grid grid-cols-2 gap-3">
+            <button class="pay-btn inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-[#ff7800] bg-[#ff7800] px-3 font-bold text-white hover:bg-orange-600 [&_img]:h-4 [&_img]:w-4 active"><img src="assets/icons/Transaksi%20Penjualan/tunai.svg" alt=""> Tunai</button>
+            <button class="pay-btn inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-[#e7b89b] bg-white px-3 font-bold text-[#6f625c] hover:bg-orange-50 [&_img]:h-4 [&_img]:w-4"><img src="assets/icons/Transaksi%20Penjualan/qris.svg" alt=""> QRIS</button>
+            </div>
+            <div class="mini-grid grid grid-cols-2 gap-3">
+              <label class="field flex flex-col gap-1.5 [&_label]:text-[11px] [&_label]:font-bold [&_input]:h-11 [&_input]:rounded-lg [&_input]:border [&_input]:border-[#e8c8b8] [&_input]:bg-[#fffaf7] [&_input]:px-3.5 [&_input]:outline-none [&_input]:focus:border-orange-400 [&_select]:h-11 [&_select]:rounded-lg [&_select]:border [&_select]:border-[#e8c8b8] [&_select]:bg-white [&_select]:px-3.5 [&_select]:outline-none [&_select]:focus:border-orange-400 [&_textarea]:min-h-24 [&_textarea]:rounded-lg [&_textarea]:border [&_textarea]:border-[#e8c8b8] [&_textarea]:bg-[#fffaf7] [&_textarea]:p-3.5 [&_textarea]:outline-none [&_textarea]:focus:border-orange-400"><span>Bayar</span><input value="Rp 50.000"></label>
+              <label class="field flex flex-col gap-1.5 [&_label]:text-[11px] [&_label]:font-bold [&_input]:h-11 [&_input]:rounded-lg [&_input]:border [&_input]:border-[#e8c8b8] [&_input]:bg-[#fffaf7] [&_input]:px-3.5 [&_input]:outline-none [&_input]:focus:border-orange-400 [&_select]:h-11 [&_select]:rounded-lg [&_select]:border [&_select]:border-[#e8c8b8] [&_select]:bg-white [&_select]:px-3.5 [&_select]:outline-none [&_select]:focus:border-orange-400 [&_textarea]:min-h-24 [&_textarea]:rounded-lg [&_textarea]:border [&_textarea]:border-[#e8c8b8] [&_textarea]:bg-[#fffaf7] [&_textarea]:p-3.5 [&_textarea]:outline-none [&_textarea]:focus:border-orange-400"><span>Kembalian</span><input value="Rp 50" readonly></label>
+            </div>
+            <button class="primary-btn mt-4 w-full inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-[#ff7800] bg-[#ff7800] px-[18px] font-extrabold text-white shadow-[0_8px_18px_rgba(255,120,0,0.22)] transition hover:border-[#e56d00] hover:bg-[#e56d00] focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:cursor-not-allowed disabled:opacity-50"><img src="assets/icons/Transaksi%20Penjualan/prosestransaksi.svg" alt="" class="button-icon h-5 w-5"> Proses Transaksi</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  
+      </main>
+    </div>
+    <script src="/assets/sipart-ui.js"></script>
+    <script id="sipart-interactive">
+
+  const asset = (...parts) => ['assets', 'icons', ...parts].map(encodeURIComponent).join('/');
+  const icons = {
+    oli: asset('Produk & Kategori', 'oli.svg'),
+    ban: asset('Produk & Kategori', 'ban.svg'),
+    kampas: asset('Produk & Kategori', 'kampas_rem.svg'),
+    aki: asset('Produk & Kategori', 'aki.svg'),
+    mesin: asset('Produk & Kategori', 'mesin.svg'),
+    lampu: asset('Produk & Kategori', 'lampu.svg'),
+    edit: asset('Produk & Kategori', 'aksi_pensil.svg'),
+    trash: asset('Produk & Kategori', 'aksi_sampah.svg')
+  };
+  const api = async (url, options = {}) => {
+    const response = await fetch(url, {
+      ...options,
+      headers: { 'Content-Type': 'application/json', ...(options.headers || {}) }
+    });
+    if (!response.ok) {
+      let message = response.statusText || 'Request gagal';
+      try {
+        const body = await response.json();
+        message = body.detail || body.message || message;
+      } catch (error) {}
+      throw new Error(message);
+    }
+    return response.status === 204 ? null : response.json();
+  };
+  const safe = (value) => String(value ?? '').replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
+  const money = (value) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(Number(value || 0));
+  const numberOnly = (value) => Number(String(value || '').replace(/[^0-9]/g, '')) || 0;
+  const iconFor = (name) => icons[name] || icons.mesin;
+  const tagClass = (status) => {
+    const text = String(status || '').toLowerCase();
+    if (text.includes('match') || text.includes('selesai') || text.includes('aktif')) return 'green bg-green-100 text-green-700';
+    if (text.includes('pending') || text.includes('rendah')) return 'orange bg-orange-100 text-orange-700';
+    if (text.includes('kritis') || text.includes('difference') || text.includes('habis')) return 'red bg-red-100 text-red-700';
+    return 'blue bg-blue-100 text-blue-700';
+  };
+  function notify(message, danger = false) {
+    let toast = document.querySelector('.sipart-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'sipart-toast fixed right-4 bottom-4 z-[9999] max-w-[320px] rounded-lg px-[18px] py-3.5 font-extrabold text-white shadow-[0_16px_36px_rgba(0,0,0,.18)] transition sm:right-6 sm:bottom-6';
+      document.body.appendChild(toast);
+    }
+    toast.classList.remove('bg-red-600', 'bg-green-600');
+    toast.classList.add(danger ? 'bg-red-600' : 'bg-green-600');
+    toast.textContent = message;
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(() => toast.remove(), 2600);
+  }
+  function findPanel(title) {
+    return [...document.querySelectorAll('.panel')].find((panel) => panel.textContent.includes(title));
+  }
+  function miniIcon(iconName) {
+    return `<span class="product-icon-mini grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#f4efec] [&_img]:h-6 [&_img]:w-6"><img src="${iconFor(iconName)}" alt=""></span>`;
+  }
+
+  const activeButtonClasses = ['border-[#ff7800]', 'bg-[#ff7800]', 'text-white'];
+  function setActiveInGroup(container, selected) {
+    container.querySelectorAll('button').forEach((button) => {
+      const isActive = button === selected;
+      button.classList.toggle('active', isActive);
+      activeButtonClasses.forEach((className) => button.classList.toggle(className, isActive));
+    });
+  }
+  document.querySelectorAll('.pagination').forEach((pagination) => {
+    pagination.addEventListener('click', (event) => {
+      const selected = event.target.closest('.page-btn');
+      if (!selected) return;
+      const numberButtons = [...pagination.querySelectorAll('.page-btn')].filter((button) => /^\d+$/.test(button.textContent.trim()));
+      let target = selected;
+      if (!/^\d+$/.test(selected.textContent.trim())) {
+        const currentIndex = Math.max(0, numberButtons.findIndex((button) => button.classList.contains('active')));
+        const direction = selected.textContent.includes('<') ? -1 : 1;
+        target = numberButtons[Math.max(0, Math.min(numberButtons.length - 1, currentIndex + direction))];
+      }
+      if (target) {
+        setActiveInGroup(pagination, target);
+        notify('Halaman ' + target.textContent.trim() + ' dipilih');
+      }
+    });
+  });
+  document.querySelectorAll('.logout').forEach((link) => link.addEventListener('click', async (event) => {
+    event.preventDefault();
+    try { await api('/api/auth/logout', { method: 'POST' }); } catch (error) {}
+    notify('Sesi ditutup');
+    setTimeout(() => { window.location.href = '/login'; }, 500);
+  }));
+
+  let salesProducts = [];
+  let cart = new Map();
+  let activeCategory = 'Semua Produk';
+  async function loadSalesProducts() {
+    try {
+      salesProducts = await api('/api/sales/products');
+      renderSalesProducts();
+      renderCart();
+    } catch (error) {
+      notify(error.message, true);
+    }
+  }
+  function matchesCategory(item) {
+    if (activeCategory === 'Semua Produk') return true;
+    if (activeCategory.includes('Oli')) return item.category === 'OLI';
+    if (activeCategory.includes('Mesin')) return item.category === 'MESIN' || item.category === 'KAMPAS';
+    if (activeCategory.includes('Kelistrikan')) return item.category === 'AKI' || item.category === 'LAMPU';
+    return true;
+  }
+  function renderSalesProducts() {
+    const grid = document.querySelector('.product-grid');
+    const query = document.querySelector('.sales-search input')?.value?.toLowerCase() || '';
+    if (!grid) return;
+    grid.innerHTML = salesProducts.filter((item) => matchesCategory(item)).filter((item) => item.name.toLowerCase().includes(query) || item.sku.toLowerCase().includes(query)).map((item) => {
+      const disabled = item.stock <= 0;
+      return `<article class="product-card ${disabled ? 'disabled opacity-50 grayscale' : ''} flex min-h-[190px] flex-col rounded-lg border border-[#efc8b6] bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"><span class="stock-pill ${item.stock <= item.minStock ? 'red bg-red-100 text-red-700' : 'green bg-green-100 text-green-700'} mb-2 inline-flex w-fit rounded-full px-2 py-1 text-[10px] font-black">STOK: ${item.stock}</span><div class="product-name-row mb-4 flex items-center justify-start gap-3">${miniIcon(item.icon)}<div><strong>${safe(item.name)}</strong><div class="sku text-[10px] text-[#756862]">${safe(item.priceText)}</div></div></div><button class="mt-auto ${disabled ? 'soft-btn inline-flex min-h-[38px] items-center justify-center rounded-lg border border-[#f4d2bd] bg-[#fff0e6] px-3.5 font-bold text-[#b44f00]' : 'primary-btn min-h-[42px] bg-[#ff7800] px-[18px] font-extrabold text-white'}" data-add-cart="${item.id}" ${disabled ? 'disabled' : ''}>${disabled ? 'Habis' : '+ Tambah'}</button></article>`;
+    }).join('');
+  }
+  function renderCart() {
+    const body = document.querySelector('.cart-body');
+    if (!body) return;
+    const items = [...cart.values()];
+    body.innerHTML = items.length ? items.map((line) => `<div class="cart-item grid grid-cols-[1fr_auto] gap-3 border-b border-[#ead8cf] py-4"><div class="flex items-center gap-3">${miniIcon(line.product.icon)}<div><strong>${safe(line.product.name)}</strong><div class="sku text-[10px] text-[#756862]">${safe(line.product.priceText)}</div></div></div><div class="qty-control flex items-center gap-2"><button class="grid h-8 w-8 place-items-center rounded-md border border-[#ead8cf] bg-white font-bold hover:bg-orange-50" data-dec-cart="${line.product.id}">-</button><strong class="min-w-5 text-center">${line.quantity}</strong><button class="grid h-8 w-8 place-items-center rounded-md border border-[#ead8cf] bg-white font-bold hover:bg-orange-50" data-inc-cart="${line.product.id}">+</button></div></div>`).join('') : '<div class="muted text-[#756862]">Keranjang masih kosong.</div>';
+    const subtotal = items.reduce((sum, line) => sum + line.product.price * line.quantity, 0);
+    const tax = Math.round(subtotal * 0.11);
+    const total = subtotal + tax;
+    const rows = document.querySelectorAll('.summary-row strong');
+    if (rows[0]) rows[0].textContent = money(subtotal);
+    if (rows[1]) rows[1].textContent = money(tax);
+    if (rows[2]) rows[2].textContent = money(total);
+    const paidInput = document.querySelector('.mini-grid input:not([readonly])');
+    const changeInput = document.querySelector('.mini-grid input[readonly]');
+    const paid = numberOnly(paidInput?.value) || total;
+    if (paidInput && !paidInput.value) paidInput.value = money(total);
+    if (changeInput) changeInput.value = money(Math.max(0, paid - total));
+  }
+  document.addEventListener('click', (event) => {
+    const add = event.target.closest('[data-add-cart]');
+    const inc = event.target.closest('[data-inc-cart]');
+    const dec = event.target.closest('[data-dec-cart]');
+    if (add) {
+      const product = salesProducts.find((item) => String(item.id) === add.dataset.addCart);
+      const existing = cart.get(product.id) || { product, quantity: 0 };
+      if (existing.quantity >= product.stock) return notify('Stok tidak cukup.', true);
+      existing.quantity += 1;
+      cart.set(product.id, existing);
+      renderCart();
+    }
+    if (inc) {
+      const line = cart.get(Number(inc.dataset.incCart));
+      if (!line || line.quantity >= line.product.stock) return;
+      line.quantity += 1;
+      renderCart();
+    }
+    if (dec) {
+      const id = Number(dec.dataset.decCart);
+      const line = cart.get(id);
+      if (!line) return;
+      line.quantity -= 1;
+      if (line.quantity <= 0) cart.delete(id);
+      renderCart();
+    }
+  });
+  document.querySelector('.danger-btn')?.addEventListener('click', () => { cart.clear(); renderCart(); });
+  function printReceipt(sale) {
+    const receipt = window.open('', '_blank', 'width=420,height=700');
+    if (!receipt) return notify('Izinkan pop-up browser untuk mencetak struk', true);
+    const itemRows = sale.items.map((item) => `<tr class="border-b border-stone-200"><td class="py-2">${safe(item.name)} x${item.quantity}</td><td class="py-2 text-right">${money(item.price * item.quantity)}</td></tr>`).join('');
+    receipt.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Struk ${safe(sale.code)}</title><script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"><\/script></head><body class="mx-auto max-w-[380px] p-6 font-sans text-sm text-[#201a17]"><header class="border-b-2 border-[#ff7800] pb-4"><h2 class="text-2xl font-black text-[#ff7800]">SIPART</h2><div class="mt-1 text-xs text-stone-500">${safe(sale.code)} - ${safe(sale.date)}</div></header><table class="my-4 w-full text-xs">${itemRows}</table><div class="grid gap-2 border-t border-stone-300 pt-4"><p class="flex justify-between">Subtotal <strong>${safe(sale.subtotalText)}</strong></p><p class="flex justify-between">Pajak <strong>${safe(sale.taxText)}</strong></p><p class="flex justify-between text-base">Total <strong>${safe(sale.totalText)}</strong></p><p class="flex justify-between">Bayar <strong>${safe(sale.paidText)}</strong></p><p class="flex justify-between text-green-700">Kembalian <strong>${safe(sale.changeText)}</strong></p></div><p class="mt-8 text-center text-xs text-stone-500">Terima kasih</p><script>window.onload=()=>setTimeout(()=>window.print(),300)<\/script></body></html>`);
+    receipt.document.close();
+  }
+  document.querySelector('.cart-footer .primary-btn')?.addEventListener('click', async () => {
+    const items = [...cart.values()].map((line) => ({ productId: line.product.id, quantity: line.quantity }));
+    const activePay = document.querySelector('.pay-btn.active')?.textContent.trim() || 'Tunai';
+    const paid = numberOnly(document.querySelector('.mini-grid input:not([readonly])')?.value);
+    try {
+      const sale = await api('/api/sales', { method: 'POST', body: JSON.stringify({ items, paymentMethod: activePay, paid }) });
+      notify('Transaksi berhasil: ' + sale.code);
+      if (await SipartUI.confirm({ title: 'Transaksi berhasil', message: `${sale.code} telah tersimpan. Cetak struk sekarang?`, confirmLabel: 'Cetak Struk', danger: false })) printReceipt(sale);
+      cart.clear();
+      await loadSalesProducts();
+    } catch (error) {
+      notify(error.message, true);
+    }
+  });
+  document.querySelectorAll('.tab').forEach((tab) => tab.addEventListener('click', () => {
+    setActiveInGroup(tab.closest('.tabs'), tab);
+    activeCategory = tab.textContent.trim();
+    renderSalesProducts();
+  }));
+  document.querySelectorAll('.pay-btn').forEach((button) => button.addEventListener('click', () => {
+    setActiveInGroup(button.closest('.payment-grid'), button);
+  }));
+  document.querySelector('.sales-search input')?.addEventListener('input', renderSalesProducts);
+  document.querySelector('.mini-grid input:not([readonly])')?.addEventListener('input', renderCart);
+  loadSalesProducts();
+
+  </script>
+  </body>
+</html>

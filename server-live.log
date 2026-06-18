@@ -1,0 +1,19 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.0)
+
+2026-06-19T05:07:16.898+07:00  INFO 51940 --- [demo] [           main] com.TugasBesar.demo.DemoApplication      : Starting DemoApplication v0.0.1-SNAPSHOT using Java 17.0.19 with PID 51940 (C:\TUGAS KULIAH\semester 4\MATA KULIAH\OOP\FinalProject\demo\target\demo-0.0.1-SNAPSHOT.jar started by Bgs in C:\TUGAS KULIAH\semester 4\MATA KULIAH\OOP\FinalProject\demo)
+2026-06-19T05:07:16.904+07:00  INFO 51940 --- [demo] [           main] com.TugasBesar.demo.DemoApplication      : No active profile set, falling back to 1 default profile: "default"
+2026-06-19T05:07:17.963+07:00  INFO 51940 --- [demo] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-06-19T05:07:17.983+07:00  INFO 51940 --- [demo] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-19T05:07:17.984+07:00  INFO 51940 --- [demo] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-06-19T05:07:18.017+07:00  INFO 51940 --- [demo] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1050 ms
+2026-06-19T05:07:18.143+07:00  INFO 51940 --- [demo] [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-06-19T05:07:18.426+07:00  INFO 51940 --- [demo] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-06-19T05:07:18.439+07:00  INFO 51940 --- [demo] [           main] com.TugasBesar.demo.DemoApplication      : Started DemoApplication in 2.126 seconds (process running for 2.751)

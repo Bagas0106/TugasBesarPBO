@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - SIPART</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="m-0 min-h-screen bg-[#f7f4f2] font-sans text-[#201a17] antialiased">
+    <main class="min-h-screen lg:grid lg:grid-cols-[minmax(0,1.05fr)_minmax(440px,.95fr)]">
+      <section class="relative flex min-h-[310px] flex-col justify-between overflow-hidden bg-[#302d2b] px-6 py-7 text-white sm:px-10 sm:py-10 lg:min-h-screen lg:px-14 lg:py-12">
+        <div class="flex items-center justify-between border-b border-white/10 pb-5">
+          <div class="text-2xl font-black text-[#ff7800]">SIPART</div>
+          <span class="rounded-full border border-white/15 px-3 py-1 text-[11px] font-bold text-stone-300">Sistem Operasional</span>
+        </div>
+        <div class="max-w-2xl py-10 lg:py-16">
+          <p class="mb-3 text-xs font-black uppercase text-[#ff9a42]">Sistem Informasi Penjualan Sparepart</p>
+          <h1 class="max-w-xl text-4xl font-black leading-tight sm:text-5xl">Kelola toko dari satu ruang kerja.</h1>
+          <div class="mt-9 grid max-w-xl grid-cols-3 gap-3">
+            <div class="rounded-lg border border-white/10 bg-white/5 p-3 sm:p-4"><img src="assets/icons/Navigation/nav_dashboard_selected.svg" alt="" class="mb-3 h-6 w-6"><strong class="block text-xs sm:text-sm">Owner</strong></div>
+            <div class="rounded-lg border border-white/10 bg-white/5 p-3 sm:p-4"><img src="assets/icons/Navigation/nav_stock_selected.svg" alt="" class="mb-3 h-6 w-6"><strong class="block text-xs sm:text-sm">Gudang</strong></div>
+            <div class="rounded-lg border border-white/10 bg-white/5 p-3 sm:p-4"><img src="assets/icons/Transaksi%20Penjualan/transaksipenjualan.svg" alt="" class="mb-3 h-6 w-6"><strong class="block text-xs sm:text-sm">Kasir</strong></div>
+          </div>
+        </div>
+        <p class="text-xs text-stone-400">SIPART &copy; 2026</p>
+      </section>
+
+      <section class="flex items-center justify-center px-5 py-9 sm:px-10 lg:px-14">
+        <div class="w-full max-w-[560px]">
+          <div class="mb-7">
+            <p class="text-xs font-black uppercase text-[#b44f00]">Selamat datang</p>
+            <h2 class="mt-2 text-3xl font-black">Masuk ke Sistem</h2>
+            <p class="mt-2 text-sm text-[#6f625c]">Pilih ruang kerja sesuai akun Anda.</p>
+          </div>
+
+          <form id="login-form" class="grid gap-5">
+            <fieldset>
+              <legend class="mb-2.5 text-xs font-black text-[#67554d]">Role</legend>
+              <div class="grid grid-cols-3 gap-2" id="role-picker">
+                <button type="button" data-role="Owner" data-email="admin@sipart.test" class="role-option min-h-[82px] rounded-lg border border-[#ff7800] bg-[#fff3e9] px-2 py-3 text-center text-xs font-extrabold text-[#9a4600] ring-2 ring-orange-100 transition">
+                  <img src="assets/icons/Navigation/nav_manajemen_user_selected.svg" alt="" class="mx-auto mb-2 h-5 w-5">Owner
+                </button>
+                <button type="button" data-role="Admin Gudang" data-email="gudang@sipart.test" class="role-option min-h-[82px] rounded-lg border border-[#ead8cf] bg-white px-2 py-3 text-center text-xs font-extrabold text-[#67554d] transition hover:border-orange-300 hover:bg-orange-50">
+                  <img src="assets/icons/Navigation/nav_stock.svg" alt="" class="mx-auto mb-2 h-5 w-5">Gudang
+                </button>
+                <button type="button" data-role="Admin Kasir" data-email="kasir@sipart.test" class="role-option min-h-[82px] rounded-lg border border-[#ead8cf] bg-white px-2 py-3 text-center text-xs font-extrabold text-[#67554d] transition hover:border-orange-300 hover:bg-orange-50">
+                  <img src="assets/icons/Transaksi%20Penjualan/transaksipenjualan.svg" alt="" class="mx-auto mb-2 h-5 w-5">Kasir
+                </button>
+              </div>
+            </fieldset>
+
+            <label class="grid gap-2 text-xs font-black text-[#67554d]">
+              Email
+              <input id="email" type="email" autocomplete="username" value="admin@sipart.test" required class="h-12 rounded-lg border border-[#e7c7b6] bg-white px-4 text-sm font-medium text-[#201a17] outline-none transition focus:border-[#ff7800] focus:ring-2 focus:ring-orange-100">
+            </label>
+            <label class="grid gap-2 text-xs font-black text-[#67554d]">
+              Password
+              <input id="password" type="password" autocomplete="current-password" value="demo" required class="h-12 rounded-lg border border-[#e7c7b6] bg-white px-4 text-sm font-medium text-[#201a17] outline-none transition focus:border-[#ff7800] focus:ring-2 focus:ring-orange-100">
+            </label>
+            <label class="flex w-fit items-center gap-2 text-xs font-semibold text-[#6f625c]"><input id="show-password" type="checkbox" class="h-4 w-4 accent-[#ff7800]">Tampilkan password</label>
+            <p id="login-error" class="hidden rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-xs font-bold text-red-700" role="alert"></p>
+            <button id="login-button" type="submit" class="flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#ff7800] px-5 text-sm font-extrabold text-white shadow-[0_10px_24px_rgba(255,120,0,.24)] transition hover:bg-[#e56d00] focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:cursor-wait disabled:opacity-60">
+              <span>Masuk</span><span aria-hidden="true">&rarr;</span>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const roleButtons = [...document.querySelectorAll('.role-option')];
+      const emailInput = document.querySelector('#email');
+      const passwordInput = document.querySelector('#password');
+      const errorNode = document.querySelector('#login-error');
+      const loginButton = document.querySelector('#login-button');
+      let selectedRole = 'Owner';
+
+      function selectRole(button) {
+        selectedRole = button.dataset.role;
+        emailInput.value = button.dataset.email;
+        roleButtons.forEach((item) => {
+          const active = item === button;
+          item.classList.toggle('border-[#ff7800]', active);
+          item.classList.toggle('bg-[#fff3e9]', active);
+          item.classList.toggle('text-[#9a4600]', active);
+          item.classList.toggle('ring-2', active);
+          item.classList.toggle('ring-orange-100', active);
+          item.classList.toggle('border-[#ead8cf]', !active);
+          item.classList.toggle('bg-white', !active);
+          item.classList.toggle('text-[#67554d]', !active);
+        });
+        errorNode.classList.add('hidden');
+      }
+
+      roleButtons.forEach((button) => button.addEventListener('click', () => selectRole(button)));
+      document.querySelector('#show-password').addEventListener('change', (event) => {
+        passwordInput.type = event.target.checked ? 'text' : 'password';
+      });
+      document.querySelector('#login-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        errorNode.classList.add('hidden');
+        loginButton.disabled = true;
+        loginButton.querySelector('span').textContent = 'Memeriksa akun...';
+        try {
+          const response = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: emailInput.value.trim(), password: passwordInput.value, role: selectedRole })
+          });
+          if (!response.ok) {
+            let message = 'Email, password, atau role tidak sesuai.';
+            try { message = (await response.json()).detail || message; } catch (error) {}
+            throw new Error(message);
+          }
+          const user = await response.json();
+          window.location.replace(user.defaultPath);
+        } catch (error) {
+          errorNode.textContent = error.message;
+          errorNode.classList.remove('hidden');
+          loginButton.disabled = false;
+          loginButton.querySelector('span').textContent = 'Masuk';
+        }
+      });
+    </script>
+  </body>
+</html>

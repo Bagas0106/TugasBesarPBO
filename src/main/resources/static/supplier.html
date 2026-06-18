@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Management Supplier - SIPART</title>
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="m-0 bg-[#f7f4f2] font-sans text-sm text-[#201a17] antialiased [&_button]:cursor-pointer">
+    <div class="app-shell min-h-screen bg-[#f7f4f2] lg:grid lg:grid-cols-[236px_minmax(0,1fr)]">
+      
+    <aside class="sidebar flex flex-col border-r border-[#ead8cf] bg-white p-4 lg:sticky lg:top-0 lg:h-screen lg:px-[18px] lg:py-7">
+      <div class="brand mb-5 px-2 lg:mb-8">
+        <div class="brand-name text-[15px] font-black leading-none text-[#ff7800]">SIPART</div>
+        <div class="brand-role mt-1.5 text-xs text-[#6f625c]">System Gudang</div>
+      </div>
+      <nav class="nav-list grid grid-cols-2 gap-2 sm:grid-cols-3 lg:flex lg:flex-col">
+        
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/dashboard">
+              <img src="assets/icons/Navigation/nav_dashboard.svg" alt="">
+              <span>Dashboard</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/produk-kategori">
+              <img src="assets/icons/Navigation/nav_produk_kategori.svg" alt="">
+              <span>Produk & Kategori</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/stock">
+              <img src="assets/icons/Navigation/nav_stock.svg" alt="">
+              <span>Stock</span>
+            </a>
+          
+            <a class="nav-item active flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5 bg-[#ff7800] text-[#2b1b11] shadow-sm hover:bg-[#ff7800] hover:text-[#2b1b11]" href="/supplier">
+              <img src="assets/icons/Navigation/nav_supplier_selected.svg" alt="">
+              <span>Supplier</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/transaksi-pembelian">
+              <img src="assets/icons/Navigation/nav_transaksi_pembelian.svg" alt="">
+              <span>Transaksi Pembelian</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/transaksi-penjualan">
+              <img src="assets/icons/Transaksi%20Penjualan/transaksipenjualan.svg" alt="">
+              <span>Transaksi Penjualan</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/manajemen-user">
+              <img src="assets/icons/Navigation/nav_manajemen_user.svg" alt="">
+              <span>Manajemen User</span>
+            </a>
+          
+      </nav>
+      <div class="nav-spacer my-4 hidden h-px bg-[#ead8cf] lg:block"></div>
+      <a class="logout mt-3 flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline hover:bg-red-50 hover:text-red-700 lg:mt-auto [&_img]:h-5 [&_img]:w-5" href="#">
+        <img src="assets/icons/Navigation/nav_logout.svg" alt="">
+        <span>Logout</span>
+      </a>
+    </aside>
+  
+      <main class="page-shell min-w-0">
+        
+    <header class="topbar sticky top-0 z-30 flex min-h-[72px] flex-col gap-3 border-b border-[#ead8cf] bg-white/95 px-4 py-3 backdrop-blur sm:flex-row sm:items-center sm:justify-between md:px-7">
+      <label class="search flex h-[42px] w-full items-center gap-3 rounded-lg border border-[#efc8b6] bg-[#fffaf7] px-3.5 text-[#7a6b64] sm:max-w-[520px] [&_img]:h-5 [&_img]:w-5 [&_input]:min-w-0 [&_input]:flex-1 [&_input]:border-0 [&_input]:bg-transparent [&_input]:outline-none">
+        <img src="assets/icons/Stock%2C%20Transaksi%20Pembelian/carisparepart.svg" alt="">
+        <input type="search" placeholder="Cari sparepart...">
+      </label>
+      <div class="profile flex items-center gap-3 self-end whitespace-nowrap sm:self-auto">
+        <div>
+          <div class="profile-name text-right text-sm font-bold">Raihan Haryo</div>
+          <div class="online flex items-center justify-end gap-1 text-[11px] text-[#6f625c]"><span class="online-dot h-2 w-2 rounded-full bg-green-600"></span>Online</div>
+        </div>
+        <div class="avatar grid h-[38px] w-[38px] place-items-center rounded-full border-2 border-[#d6a17b] bg-[#263544] text-[11px] font-black text-white shadow-sm" aria-label="Avatar Raihan Haryo">RH</div>
+      </div>
+    </header>
+  
+        <div class="content mx-auto w-full max-w-[1500px] p-4 sm:p-6 md:px-7">
+    <div class="page-title-row mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between [&_h1]:text-[26px] [&_h1]:font-black [&_h1]:leading-tight [&_h2]:text-xl [&_h2]:font-black">
+      <div>
+        <h1 class="text-[#ff7800]">Manajemen Supplier</h1>
+        <p class="page-subtitle mt-1 text-[13px] text-[#6f625c]">Kelola data supplier, kontak supplier, dan riwayat pembelian barang.</p>
+      </div>
+      <button class="primary-btn inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-[#ff7800] bg-[#ff7800] px-[18px] font-extrabold text-white shadow-[0_8px_18px_rgba(255,120,0,0.22)] transition hover:border-[#e56d00] hover:bg-[#e56d00] focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:cursor-not-allowed disabled:opacity-50"><span aria-hidden="true" class="text-xl leading-none">+</span> Tambah Supplier</button>
+    </div>
+    <div class="stat-grid sm:grid-cols-2 xl:grid-cols-3 mb-6 grid grid-cols-1 gap-[18px] xl:grid-cols-4">
+      
+    <article class="stat-card grid min-h-[126px] grid-cols-[1fr_auto] items-center gap-3 rounded-lg border border-[#efc8b6] bg-white p-5 shadow-[0_12px_28px_rgba(104,64,36,0.09)]">
+      <div>
+        <div class="stat-label mb-3 text-sm text-[#6f625c]">Total Supplier</div>
+        <div class="stat-value small text-[28px] font-black leading-none text-[#201a17] text-base leading-snug">124</div>
+      </div>
+      <img src="assets/icons/Stock%2C%20Transaksi%20Pembelian/totalsupplieraktif.svg" alt="" class="stat-icon h-[58px] w-[68px] object-contain">
+    </article>
+  
+      
+    <article class="stat-card grid min-h-[126px] grid-cols-[1fr_auto] items-center gap-3 rounded-lg border border-[#efc8b6] bg-white p-5 shadow-[0_12px_28px_rgba(104,64,36,0.09)]">
+      <div>
+        <div class="stat-label mb-3 text-sm text-[#6f625c]">Supplier Aktif</div>
+        <div class="stat-value small text-[28px] font-black leading-none text-[#201a17] text-base leading-snug">118</div>
+      </div>
+      <img src="assets/icons/Stock%2C%20Transaksi%20Pembelian/barangsesuai.svg" alt="" class="stat-icon h-[58px] w-[68px] object-contain">
+    </article>
+  
+      
+    <article class="stat-card grid min-h-[126px] grid-cols-[1fr_auto] items-center gap-3 rounded-lg border border-[#efc8b6] bg-white p-5 shadow-[0_12px_28px_rgba(104,64,36,0.09)]">
+      <div>
+        <div class="stat-label mb-3 text-sm text-[#6f625c]">Terakhir Digunakan</div>
+        <div class="stat-value small text-[28px] font-black leading-none text-[#201a17] text-base leading-snug">PT Jaya Abadi</div>
+      </div>
+      <img src="assets/icons/Produk%20%26%20Kategori/riwayat_perubahan_harga_naik.svg" alt="" class="stat-icon h-[58px] w-[68px] object-contain">
+    </article>
+  
+    </div>
+    <div class="supplier-layout grid gap-6 xl:grid-cols-[minmax(0,1fr)_320px]">
+      <div>
+        <section class="panel mb-6 overflow-hidden rounded-lg border border-[#efc8b6] bg-white shadow-[0_10px_24px_rgba(104,64,36,0.07)]">
+          <div class="panel-header flex min-h-16 items-center justify-between gap-4 border-b border-[#efc8b6] px-5 sm:px-6 [&_h3]:font-bold">
+            <h3>Daftar Utama Supplier</h3>
+            <div class="actions flex items-center justify-end gap-2">
+              <button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5"><img src="assets/icons/Stock%2C%20Transaksi%20Pembelian/filter.svg" alt=""></button>
+              <button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5"><img src="assets/icons/Stock%2C%20Transaksi%20Pembelian/unduh.svg" alt=""></button>
+            </div>
+          </div>
+          <div class="table-wrap w-full overflow-x-auto [&_table]:w-full [&_table]:min-w-[700px] [&_table]:border-collapse [&_th]:bg-[#f0ecea] [&_th]:px-5 [&_th]:py-3.5 [&_th]:text-left [&_th]:text-[11px] [&_th]:font-black [&_th]:uppercase [&_th]:text-[#67554d] [&_td]:border-b [&_td]:border-[#ecd7cc] [&_td]:px-5 [&_td]:py-3.5 [&_td]:align-middle [&_tbody_tr:nth-child(even)]:bg-[#faf8f7]">
+            <table class="compact [&_table]:min-w-[620px] [&_td]:py-3">
+              <thead><tr><th>Logo</th><th>Nama Supplier</th><th>PIC</th><th>Status</th><th>Aksi</th></tr></thead>
+              <tbody>
+                
+                  <tr>
+                    <td><span class="supplier-logo grid h-9 w-9 place-items-center rounded-md bg-[#ffe3cc] text-xs font-black text-[#ff7800]">PT</span></td>
+                    <td><strong>PT Jaya Abadi Tekstil</strong></td>
+                    <td>Budi Santoso</td>
+                    <td><span class="tag blue inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase bg-blue-100 text-blue-700">AKTIF</span></td>
+                    <td><div class="actions flex items-center justify-end gap-2"><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5"><img src="assets/icons/Produk%20%26%20Kategori/aksi_pensil.svg" alt=""></button><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5"><img src="assets/icons/Produk%20%26%20Kategori/aksi_sampah.svg" alt=""></button></div></td>
+                  </tr>
+                
+                  <tr>
+                    <td><span class="supplier-logo grid h-9 w-9 place-items-center rounded-md bg-[#ffe3cc] text-xs font-black text-[#ff7800]">CV</span></td>
+                    <td><strong>CV Maju Terus</strong></td>
+                    <td>Ani Wijaya</td>
+                    <td><span class="tag blue inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase bg-blue-100 text-blue-700">AKTIF</span></td>
+                    <td><div class="actions flex items-center justify-end gap-2"><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5"><img src="assets/icons/Produk%20%26%20Kategori/aksi_pensil.svg" alt=""></button><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5"><img src="assets/icons/Produk%20%26%20Kategori/aksi_sampah.svg" alt=""></button></div></td>
+                  </tr>
+                
+                  <tr>
+                    <td><span class="supplier-logo grid h-9 w-9 place-items-center rounded-md bg-[#ffe3cc] text-xs font-black text-[#ff7800]">UD</span></td>
+                    <td><strong>UD Berkah Jaya</strong></td>
+                    <td>Agus Setiawan</td>
+                    <td><span class="tag gray inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase bg-stone-200 text-stone-700">NONAKTIF</span></td>
+                    <td><div class="actions flex items-center justify-end gap-2"><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5"><img src="assets/icons/Produk%20%26%20Kategori/aksi_pensil.svg" alt=""></button><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5"><img src="assets/icons/Produk%20%26%20Kategori/aksi_sampah.svg" alt=""></button></div></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          </div>
+          <div class="toolbar-row px-[22px] pb-[22px] flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <span class="muted text-[#756862]">Menampilkan 1-10 dari 124 Supplier</span>
+            <div class="pagination flex flex-wrap items-center justify-end gap-2 p-4"><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">&lt;</button><button class="page-btn active grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50 border-[#ff7800] bg-[#ff7800] text-white">1</button><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">2</button><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">3</button><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">&gt;</button></div>
+          </div>
+        </section>
+        <h3 class="my-[22px] mb-3.5">Kontak Cepat Supplier Utama</h3>
+        <div class="quick-contact mt-6">
+          <div class="supplier-contact justify-start max-w-[280px] rounded-lg border border-[#efc8b6] bg-white p-4 shadow-sm">
+            <div class="contact-avatar grid h-11 w-11 place-items-center rounded-full bg-[#263544] text-xs font-black text-white"></div>
+            <div><strong>Budi Santoso</strong><div class="sku text-[10px] text-[#756862]">PT Jaya Abadi Tekstil</div></div>
+          </div>
+          <div class="contact-line mt-3 flex items-center gap-2 text-xs [&_img]:h-4 [&_img]:w-4">Tel 081234567890</div>
+          <div class="contact-line mt-3 flex items-center gap-2 text-xs [&_img]:h-4 [&_img]:w-4">Mail 081234567890</div>
+        </div>
+      </div>
+      <section class="panel mb-6 overflow-hidden rounded-lg border border-[#efc8b6] bg-white shadow-[0_10px_24px_rgba(104,64,36,0.07)]">
+        <div class="panel-header flex min-h-16 items-center justify-between gap-4 border-b border-[#efc8b6] px-5 sm:px-6 [&_h3]:font-bold"><h3>Aktivitas Supplier</h3></div>
+        <div class="timeline relative grid gap-5 p-5 before:absolute before:bottom-6 before:left-[25px] before:top-6 before:w-px before:bg-[#edc7b1]">
+          
+    <div class="timeline-item relative grid grid-cols-[20px_minmax(0,1fr)] gap-3 text-xs">
+      <div class="timeline-dot relative z-10 mt-0.5 h-5 w-5 rounded-full border-4 border-white bg-[#ff7800] shadow">+</div>
+      <div>
+        <strong>Supplier Baru Ditambahkan</strong>
+        <p class="muted mt-[5px] text-[#756862]">PT Global Mandiri terdaftar di sistem.</p>
+        <div class="money-orange sku mt-[7px] font-extrabold text-[#b44f00] text-[10px] text-[#756862]">Tadi - 09:45 AM</div>
+      </div>
+    </div>
+  
+          
+    <div class="timeline-item relative grid grid-cols-[20px_minmax(0,1fr)] gap-3 text-xs">
+      <div class="timeline-dot blue relative z-10 mt-0.5 h-5 w-5 rounded-full border-4 border-white bg-[#ff7800] shadow bg-blue-500">*</div>
+      <div>
+        <strong>Pembelian Selesai</strong>
+        <p class="muted mt-[5px] text-[#756862]">Invoice INV-2023-091 telah dibayar penuh ke PT Jaya Abadi.</p>
+        <div class="money-orange sku mt-[7px] font-extrabold text-[#b44f00] text-[10px] text-[#756862]">Kemarin - 02:20 PM</div>
+      </div>
+    </div>
+  
+          
+    <div class="timeline-item relative grid grid-cols-[20px_minmax(0,1fr)] gap-3 text-xs">
+      <div class="timeline-dot soft relative z-10 mt-0.5 h-5 w-5 rounded-full border-4 border-white bg-[#ff7800] shadow bg-orange-300">/</div>
+      <div>
+        <strong>Pembaruan Profil</strong>
+        <p class="muted mt-[5px] text-[#756862]">Kontak PIC CV Maju Terus diubah oleh Admin.</p>
+        <div class="money-orange sku mt-[7px] font-extrabold text-[#b44f00] text-[10px] text-[#756862]">3 Okt - 11:00 AM</div>
+      </div>
+    </div>
+  
+        </div>
+      </section>
+    </div>
+  </div>
+      </main>
+    </div>
+    <script src="/assets/sipart-ui.js"></script>
+    <script id="sipart-interactive">
+
+  const asset = (...parts) => ['assets', 'icons', ...parts].map(encodeURIComponent).join('/');
+  const icons = {
+    oli: asset('Produk & Kategori', 'oli.svg'),
+    ban: asset('Produk & Kategori', 'ban.svg'),
+    kampas: asset('Produk & Kategori', 'kampas_rem.svg'),
+    aki: asset('Produk & Kategori', 'aki.svg'),
+    mesin: asset('Produk & Kategori', 'mesin.svg'),
+    lampu: asset('Produk & Kategori', 'lampu.svg'),
+    edit: asset('Produk & Kategori', 'aksi_pensil.svg'),
+    trash: asset('Produk & Kategori', 'aksi_sampah.svg')
+  };
+  const api = async (url, options = {}) => {
+    const response = await fetch(url, {
+      ...options,
+      headers: { 'Content-Type': 'application/json', ...(options.headers || {}) }
+    });
+    if (!response.ok) {
+      let message = response.statusText || 'Request gagal';
+      try {
+        const body = await response.json();
+        message = body.detail || body.message || message;
+      } catch (error) {}
+      throw new Error(message);
+    }
+    return response.status === 204 ? null : response.json();
+  };
+  const safe = (value) => String(value ?? '').replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
+  const money = (value) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(Number(value || 0));
+  const numberOnly = (value) => Number(String(value || '').replace(/[^0-9]/g, '')) || 0;
+  const iconFor = (name) => icons[name] || icons.mesin;
+  const tagClass = (status) => {
+    const text = String(status || '').toLowerCase();
+    if (text.includes('match') || text.includes('selesai') || text.includes('aktif')) return 'green bg-green-100 text-green-700';
+    if (text.includes('pending') || text.includes('rendah')) return 'orange bg-orange-100 text-orange-700';
+    if (text.includes('kritis') || text.includes('difference') || text.includes('habis')) return 'red bg-red-100 text-red-700';
+    return 'blue bg-blue-100 text-blue-700';
+  };
+  function notify(message, danger = false) {
+    let toast = document.querySelector('.sipart-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'sipart-toast fixed right-4 bottom-4 z-[9999] max-w-[320px] rounded-lg px-[18px] py-3.5 font-extrabold text-white shadow-[0_16px_36px_rgba(0,0,0,.18)] transition sm:right-6 sm:bottom-6';
+      document.body.appendChild(toast);
+    }
+    toast.classList.remove('bg-red-600', 'bg-green-600');
+    toast.classList.add(danger ? 'bg-red-600' : 'bg-green-600');
+    toast.textContent = message;
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(() => toast.remove(), 2600);
+  }
+  function findPanel(title) {
+    return [...document.querySelectorAll('.panel')].find((panel) => panel.textContent.includes(title));
+  }
+  function miniIcon(iconName) {
+    return `<span class="product-icon-mini grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#f4efec] [&_img]:h-6 [&_img]:w-6"><img src="${iconFor(iconName)}" alt=""></span>`;
+  }
+
+  const activeButtonClasses = ['border-[#ff7800]', 'bg-[#ff7800]', 'text-white'];
+  function setActiveInGroup(container, selected) {
+    container.querySelectorAll('button').forEach((button) => {
+      const isActive = button === selected;
+      button.classList.toggle('active', isActive);
+      activeButtonClasses.forEach((className) => button.classList.toggle(className, isActive));
+    });
+  }
+  document.querySelectorAll('.pagination').forEach((pagination) => {
+    pagination.addEventListener('click', (event) => {
+      const selected = event.target.closest('.page-btn');
+      if (!selected) return;
+      const numberButtons = [...pagination.querySelectorAll('.page-btn')].filter((button) => /^\d+$/.test(button.textContent.trim()));
+      let target = selected;
+      if (!/^\d+$/.test(selected.textContent.trim())) {
+        const currentIndex = Math.max(0, numberButtons.findIndex((button) => button.classList.contains('active')));
+        const direction = selected.textContent.includes('<') ? -1 : 1;
+        target = numberButtons[Math.max(0, Math.min(numberButtons.length - 1, currentIndex + direction))];
+      }
+      if (target) {
+        setActiveInGroup(pagination, target);
+        notify('Halaman ' + target.textContent.trim() + ' dipilih');
+      }
+    });
+  });
+  document.querySelectorAll('.logout').forEach((link) => link.addEventListener('click', async (event) => {
+    event.preventDefault();
+    try { await api('/api/auth/logout', { method: 'POST' }); } catch (error) {}
+    notify('Sesi ditutup');
+    setTimeout(() => { window.location.href = '/login'; }, 500);
+  }));
+
+  let suppliersCache = [];
+  let supplierStatusFilter = '';
+  async function loadSuppliers() {
+    try {
+      const query = document.querySelector('.topbar .search input')?.value || '';
+      const params = new URLSearchParams();
+      if (query) params.set('q', query);
+      if (supplierStatusFilter) params.set('status', supplierStatusFilter);
+      const suppliers = await api('/api/suppliers' + (params.toString() ? '?' + params : ''));
+      suppliersCache = suppliers;
+      renderSupplierMetrics(suppliers);
+      renderSupplierTable(suppliers);
+    } catch (error) {
+      notify(error.message, true);
+    }
+  }
+  function renderSupplierMetrics(suppliers) {
+    const values = document.querySelectorAll('.stat-card .stat-value');
+    if (values[0]) values[0].textContent = suppliers.length;
+    if (values[1]) values[1].textContent = suppliers.filter((item) => item.status === 'AKTIF').length;
+    if (values[2]) values[2].textContent = suppliers[0]?.name || '-';
+  }
+  function renderSupplierTable(suppliers) {
+    const tbody = findPanel('Daftar Utama Supplier')?.querySelector('tbody');
+    if (!tbody) return;
+    tbody.innerHTML = suppliers.map((item) => `<tr><td><span class="supplier-logo grid h-9 w-9 place-items-center rounded-md bg-[#ffe3cc] text-xs font-black text-[#ff7800]">${safe(item.logo)}</span></td><td><strong>${safe(item.name)}</strong></td><td>${safe(item.pic)}</td><td><span class="tag ${tagClass(item.status)} inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase">${safe(item.status)}</span></td><td><div class="actions flex items-center justify-end gap-2"><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5" data-edit-supplier="${item.id}"><img src="${icons.edit}" alt=""></button><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5" data-delete-supplier="${item.id}"><img src="${icons.trash}" alt=""></button></div></td></tr>`).join('');
+  }
+  function downloadSuppliers() {
+    const rows = [['Logo', 'Nama Supplier', 'PIC', 'Telepon', 'Kategori', 'Status']].concat(
+      suppliersCache.map((item) => [item.logo, item.name, item.pic, item.phone, item.category || '', item.status])
+    );
+    const csv = rows.map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(',')).join('\n');
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    link.download = 'supplier-sipart.csv';
+    link.click();
+    URL.revokeObjectURL(link.href);
+    notify('Data supplier berhasil diunduh');
+  }
+  document.querySelector('.page-title-row .primary-btn')?.addEventListener('click', async () => {
+    const values = await SipartUI.form({
+      title: 'Tambah Supplier', subtitle: 'Simpan identitas dan kontak supplier utama.', submitLabel: 'Tambah Supplier',
+      fields: [
+        { name: 'name', label: 'Nama Supplier', full: true },
+        { name: 'pic', label: 'Nama PIC' },
+        { name: 'phone', label: 'Nomor Kontak', type: 'tel' },
+        { name: 'email', label: 'Email', type: 'email' },
+        { name: 'category', label: 'Kategori Barang' },
+        { name: 'address', label: 'Alamat', type: 'textarea', full: true }
+      ]
+    });
+    if (!values) return;
+    try {
+      await api('/api/suppliers', { method: 'POST', body: JSON.stringify(values) });
+      notify('Supplier berhasil ditambahkan');
+      loadSuppliers();
+    } catch (error) {
+      notify(error.message, true);
+    }
+  });
+  document.addEventListener('click', async (event) => {
+    const edit = event.target.closest('[data-edit-supplier]');
+    const remove = event.target.closest('[data-delete-supplier]');
+    try {
+      if (edit) {
+        const supplier = suppliersCache.find((item) => String(item.id) === edit.dataset.editSupplier);
+        if (!supplier) return;
+        const values = await SipartUI.form({
+          title: 'Edit Supplier', subtitle: supplier.name, submitLabel: 'Simpan Perubahan',
+          fields: [
+            { name: 'name', label: 'Nama Supplier', value: supplier.name, full: true },
+            { name: 'pic', label: 'Nama PIC', value: supplier.pic },
+            { name: 'phone', label: 'Nomor Kontak', type: 'tel', value: supplier.phone },
+            { name: 'email', label: 'Email', type: 'email', value: supplier.email },
+            { name: 'category', label: 'Kategori Barang', value: supplier.category },
+            { name: 'status', label: 'Status', type: 'select', value: supplier.status, options: ['AKTIF', 'NONAKTIF'] },
+            { name: 'address', label: 'Alamat', type: 'textarea', value: supplier.address, full: true }
+          ]
+        });
+        if (!values) return;
+        await api('/api/suppliers/' + supplier.id, { method: 'PUT', body: JSON.stringify(values) });
+        notify('Supplier diperbarui');
+        loadSuppliers();
+      }
+      if (remove && await SipartUI.confirm({ title: 'Hapus supplier?', message: 'Riwayat transaksi tetap tersimpan, tetapi supplier akan dihapus dari daftar aktif.', confirmLabel: 'Hapus Supplier' })) {
+        await api('/api/suppliers/' + remove.dataset.deleteSupplier, { method: 'DELETE' });
+        notify('Supplier dihapus');
+        loadSuppliers();
+      }
+    } catch (error) {
+      notify(error.message, true);
+    }
+  });
+  const supplierTools = findPanel('Daftar Utama Supplier')?.querySelectorAll('.panel-header .icon-btn');
+  supplierTools?.[0]?.addEventListener('click', () => {
+    const filters = ['', 'AKTIF', 'NONAKTIF'];
+    supplierStatusFilter = filters[(filters.indexOf(supplierStatusFilter) + 1) % filters.length];
+    notify(supplierStatusFilter ? 'Filter supplier: ' + supplierStatusFilter : 'Semua supplier ditampilkan');
+    loadSuppliers();
+  });
+  supplierTools?.[1]?.addEventListener('click', downloadSuppliers);
+  document.querySelector('.topbar .search input')?.addEventListener('input', loadSuppliers);
+  loadSuppliers();
+
+  </script>
+  </body>
+</html>

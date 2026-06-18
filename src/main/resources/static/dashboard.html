@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard Admin - SIPART</title>
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="m-0 bg-[#f7f4f2] font-sans text-sm text-[#201a17] antialiased [&_button]:cursor-pointer">
+    <div class="app-shell min-h-screen bg-[#f7f4f2] lg:grid lg:grid-cols-[236px_minmax(0,1fr)]">
+      
+    <aside class="sidebar flex flex-col border-r border-[#ead8cf] bg-white p-4 lg:sticky lg:top-0 lg:h-screen lg:px-[18px] lg:py-7">
+      <div class="brand mb-5 px-2 lg:mb-8">
+        <div class="brand-name text-[15px] font-black leading-none text-[#ff7800]">SIPART</div>
+        <div class="brand-role mt-1.5 text-xs text-[#6f625c]">Owner</div>
+      </div>
+      <nav class="nav-list grid grid-cols-2 gap-2 sm:grid-cols-3 lg:flex lg:flex-col">
+        
+            <a class="nav-item active flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5 bg-[#ff7800] text-[#2b1b11] shadow-sm hover:bg-[#ff7800] hover:text-[#2b1b11]" href="/dashboard">
+              <img src="assets/icons/Navigation/nav_dashboard_selected.svg" alt="">
+              <span>Dashboard</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/produk-kategori">
+              <img src="assets/icons/Navigation/nav_produk_kategori.svg" alt="">
+              <span>Produk & Kategori</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/stock">
+              <img src="assets/icons/Navigation/nav_stock.svg" alt="">
+              <span>Stock</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/supplier">
+              <img src="assets/icons/Navigation/nav_supplier.svg" alt="">
+              <span>Supplier</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/transaksi-pembelian">
+              <img src="assets/icons/Navigation/nav_transaksi_pembelian.svg" alt="">
+              <span>Transaksi Pembelian</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/transaksi-penjualan">
+              <img src="assets/icons/Transaksi%20Penjualan/transaksipenjualan.svg" alt="">
+              <span>Transaksi Penjualan</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/manajemen-user">
+              <img src="assets/icons/Navigation/nav_manajemen_user.svg" alt="">
+              <span>Manajemen User</span>
+            </a>
+          
+      </nav>
+      <div class="nav-spacer my-4 hidden h-px bg-[#ead8cf] lg:block"></div>
+      <a class="logout mt-3 flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline hover:bg-red-50 hover:text-red-700 lg:mt-auto [&_img]:h-5 [&_img]:w-5" href="#">
+        <img src="assets/icons/Navigation/nav_logout.svg" alt="">
+        <span>Logout</span>
+      </a>
+    </aside>
+  
+      <main class="page-shell min-w-0">
+        
+    <header class="topbar sticky top-0 z-30 flex min-h-[72px] flex-col gap-3 border-b border-[#ead8cf] bg-white/95 px-4 py-3 backdrop-blur sm:flex-row sm:items-center sm:justify-between md:px-7">
+      <label class="search flex h-[42px] w-full items-center gap-3 rounded-lg border border-[#efc8b6] bg-[#fffaf7] px-3.5 text-[#7a6b64] sm:max-w-[520px] [&_img]:h-5 [&_img]:w-5 [&_input]:min-w-0 [&_input]:flex-1 [&_input]:border-0 [&_input]:bg-transparent [&_input]:outline-none">
+        <img src="assets/icons/Stock%2C%20Transaksi%20Pembelian/carisparepart.svg" alt="">
+        <input type="search" placeholder="Cari sparepart...">
+      </label>
+      <div class="profile flex items-center gap-3 self-end whitespace-nowrap sm:self-auto">
+        <div>
+          <div class="profile-name text-right text-sm font-bold">Raihan Haryo</div>
+          <div class="online flex items-center justify-end gap-1 text-[11px] text-[#6f625c]"><span class="online-dot h-2 w-2 rounded-full bg-green-600"></span>Online</div>
+        </div>
+        <div class="avatar grid h-[38px] w-[38px] place-items-center rounded-full border-2 border-[#d6a17b] bg-[#263544] text-[11px] font-black text-white shadow-sm" aria-label="Avatar Raihan Haryo">RH</div>
+      </div>
+    </header>
+  
+        <div class="content mx-auto w-full max-w-[1500px] p-4 sm:p-6 md:px-7">
+    <div class="dashboard-intro page-title-row items-center mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between [&_h1]:text-[26px] [&_h1]:font-black [&_h1]:leading-tight [&_h2]:text-xl [&_h2]:font-black">
+      <div>
+        <p class="eyebrow font-extrabold text-[#5f4133]">Dashboard Sistem</p>
+        <p class="page-subtitle mt-1 text-[13px] text-[#6f625c]">Ikhtisar performa inventaris dan transaksi hari ini.</p>
+      </div>
+      <span class="mode inline-flex items-center rounded-full bg-[#ffe3cc] px-3 py-1 text-xs font-bold text-[#9a4600]">Mode Atur Ulang Aktif</span>
+    </div>
+    <div class="section-title-row mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <h2 class="eyebrow font-extrabold text-[#5f4133]">Laporan Keuntungan</h2>
+      <div class="segmented inline-flex flex-wrap items-center rounded-full bg-[#f1e9e5] p-1 [&_button]:rounded-full [&_button]:px-4 [&_button]:py-2 [&_button]:text-sm [&_button]:font-semibold [&_button]:text-[#5d504a] [&_button.active]:bg-white [&_button.active]:text-[#b44f00] [&_button.active]:shadow-sm" aria-label="Filter laporan">
+        <button class="active">Harian</button>
+        <button>Mingguan</button>
+        <button>Bulanan</button>
+        <button>Tahunan</button>
+      </div>
+    </div>
+    <div class="stat-grid mb-6 grid grid-cols-1 gap-[18px] sm:grid-cols-2 xl:grid-cols-4">
+      
+    <article class="stat-card grid min-h-[126px] grid-cols-[1fr_auto] items-center gap-3 rounded-lg border border-[#efc8b6] bg-white p-5 shadow-[0_12px_28px_rgba(104,64,36,0.09)]">
+      <div>
+        <div class="stat-label mb-3 text-sm text-[#6f625c]">Total Pendapatan</div>
+        <div class="stat-value small text-[28px] font-black leading-none text-[#201a17] text-base leading-snug">Rp 128.450.000</div>
+      </div>
+      <img src="assets/icons/Manajemen%20User%2C%20Dashboard/total_pendapatan.svg" alt="" class="stat-icon h-[58px] w-[68px] object-contain">
+    </article>
+  
+      
+    <article class="stat-card grid min-h-[126px] grid-cols-[1fr_auto] items-center gap-3 rounded-lg border border-[#efc8b6] bg-white p-5 shadow-[0_12px_28px_rgba(104,64,36,0.09)]">
+      <div>
+        <div class="stat-label mb-3 text-sm text-[#6f625c]">Total Modal</div>
+        <div class="stat-value small text-[28px] font-black leading-none text-[#201a17] text-base leading-snug">Rp 82.120.000</div>
+      </div>
+      <img src="assets/icons/Manajemen%20User%2C%20Dashboard/total_modal.svg" alt="" class="stat-icon h-[58px] w-[68px] object-contain">
+    </article>
+  
+      
+    <article class="stat-card tint-green grid min-h-[126px] grid-cols-[1fr_auto] items-center gap-3 rounded-lg border border-[#efc8b6] bg-white p-5 shadow-[0_12px_28px_rgba(104,64,36,0.09)] bg-[#f5fcf7]">
+      <div>
+        <div class="stat-label mb-3 text-sm text-[#6f625c]">Total Keuntungan</div>
+        <div class="stat-value small text-[28px] font-black leading-none text-[#201a17] text-base leading-snug">Rp 46.330.000</div>
+      </div>
+      <img src="assets/icons/Manajemen%20User%2C%20Dashboard/total_keuntungan.svg" alt="" class="stat-icon h-[58px] w-[68px] object-contain">
+    </article>
+  
+      
+    <article class="stat-card tint-orange grid min-h-[126px] grid-cols-[1fr_auto] items-center gap-3 rounded-lg border border-[#efc8b6] bg-white p-5 shadow-[0_12px_28px_rgba(104,64,36,0.09)] bg-[#fff3e9]">
+      <div>
+        <div class="stat-label mb-3 text-sm text-[#6f625c]">Total Produk Terjual</div>
+        <div class="stat-value small text-[28px] font-black leading-none text-[#201a17] text-base leading-snug">350</div>
+      </div>
+      <img src="assets/icons/Manajemen%20User%2C%20Dashboard/total_produk_terjual.svg" alt="" class="stat-icon h-[58px] w-[68px] object-contain">
+    </article>
+  
+    </div>
+    <div class="panel mb-6 overflow-hidden rounded-lg border border-[#efc8b6] bg-white shadow-[0_10px_24px_rgba(104,64,36,0.07)]">
+      <div class="panel-header flex min-h-16 items-center justify-between gap-4 border-b border-[#efc8b6] px-5 sm:px-6 [&_h3]:font-bold">
+        <h3>Barang Hampir Habis</h3>
+        <button class="panel-link font-bold text-[#b44f00] hover:text-[#ff7800]">Lihat Semua</button>
+      </div>
+      <div class="table-wrap w-full overflow-x-auto [&_table]:w-full [&_table]:min-w-[700px] [&_table]:border-collapse [&_th]:bg-[#f0ecea] [&_th]:px-5 [&_th]:py-3.5 [&_th]:text-left [&_th]:text-[11px] [&_th]:font-black [&_th]:uppercase [&_th]:text-[#67554d] [&_td]:border-b [&_td]:border-[#ecd7cc] [&_td]:px-5 [&_td]:py-3.5 [&_td]:align-middle [&_tbody_tr:nth-child(even)]:bg-[#faf8f7]">
+        <table class="compact [&_table]:min-w-[620px] [&_td]:py-3">
+          <thead>
+            <tr><th>Produk</th><th>Stok</th><th>Status</th><th>Aksi</th></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td><div class="product-name-row justify-start flex items-center gap-3"><span class="product-icon-mini grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#f4efec] [&_img]:h-6 [&_img]:w-6"><img src="assets/icons/Produk%20%26%20Kategori/mesin.svg" alt=""></span><strong>Busi NGK Platinum</strong></div></td>
+                <td>5</td>
+                <td><span class="tag red inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase bg-red-100 text-red-700">KRITIS</span></td>
+                <td><button class="primary-btn min-h-[34px] inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-[#ff7800] bg-[#ff7800] px-[18px] font-extrabold text-white shadow-[0_8px_18px_rgba(255,120,0,0.22)] transition hover:border-[#e56d00] hover:bg-[#e56d00] focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:cursor-not-allowed disabled:opacity-50">Restock</button></td>
+              </tr>
+            
+              <tr>
+                <td><div class="product-name-row justify-start flex items-center gap-3"><span class="product-icon-mini grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#f4efec] [&_img]:h-6 [&_img]:w-6"><img src="assets/icons/Produk%20%26%20Kategori/oli.svg" alt=""></span><strong>Oli Castrol Power 1</strong></div></td>
+                <td>8</td>
+                <td><span class="tag red inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase bg-red-100 text-red-700">KRITIS</span></td>
+                <td><button class="primary-btn min-h-[34px] inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-[#ff7800] bg-[#ff7800] px-[18px] font-extrabold text-white shadow-[0_8px_18px_rgba(255,120,0,0.22)] transition hover:border-[#e56d00] hover:bg-[#e56d00] focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:cursor-not-allowed disabled:opacity-50">Restock</button></td>
+              </tr>
+            
+              <tr>
+                <td><div class="product-name-row justify-start flex items-center gap-3"><span class="product-icon-mini grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#f4efec] [&_img]:h-6 [&_img]:w-6"><img src="assets/icons/Produk%20%26%20Kategori/ban.svg" alt=""></span><strong>Ban Luar IRC 80/90</strong></div></td>
+                <td>12</td>
+                <td><span class="tag orange inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase bg-orange-100 text-orange-700">RENDAH</span></td>
+                <td><button class="primary-btn min-h-[34px] inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-[#ff7800] bg-[#ff7800] px-[18px] font-extrabold text-white shadow-[0_8px_18px_rgba(255,120,0,0.22)] transition hover:border-[#e56d00] hover:bg-[#e56d00] focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:cursor-not-allowed disabled:opacity-50">Restock</button></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <section class="panel mb-6 overflow-hidden rounded-lg border border-[#efc8b6] bg-white shadow-[0_10px_24px_rgba(104,64,36,0.07)]" data-purchase-history>
+      <div class="panel-header flex min-h-16 items-center justify-between gap-4 border-b border-[#efc8b6] px-5 sm:px-6 [&_h3]:font-bold">
+        <h3>Riwayat Pembelian</h3>
+        <button class="ghost-btn min-h-9 rounded-lg border border-[#e4a77f] bg-[#fffaf7] px-3 font-bold text-[#a34908] hover:bg-orange-50" data-purchase-filter>Semua Status</button>
+      </div>
+      <div class="table-wrap w-full overflow-x-auto [&_table]:w-full [&_table]:min-w-[700px] [&_table]:border-collapse [&_th]:bg-[#f0ecea] [&_th]:px-5 [&_th]:py-3.5 [&_th]:text-left [&_th]:text-[11px] [&_th]:font-black [&_th]:uppercase [&_th]:text-[#67554d] [&_td]:border-b [&_td]:border-[#ecd7cc] [&_td]:px-5 [&_td]:py-3.5 [&_td]:align-middle [&_tbody_tr:nth-child(even)]:bg-[#faf8f7]">
+        <table>
+          <thead><tr><th>Supplier</th><th>Item</th><th>Tanggal</th><th>Total</th><th>Status</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+    
+    <section class="panel mb-6 overflow-hidden rounded-lg border border-[#efc8b6] bg-white shadow-[0_10px_24px_rgba(104,64,36,0.07)]">
+      <div class="panel-header flex min-h-16 items-center justify-between gap-4 border-b border-[#efc8b6] px-5 sm:px-6 [&_h3]:font-bold">
+        <h3>Barang Terlaris</h3>
+        <button class="panel-link font-bold text-[#b44f00] hover:text-[#ff7800]">Lihat Semua</button>
+      </div>
+      <div class="table-wrap w-full overflow-x-auto [&_table]:w-full [&_table]:min-w-[700px] [&_table]:border-collapse [&_th]:bg-[#f0ecea] [&_th]:px-5 [&_th]:py-3.5 [&_th]:text-left [&_th]:text-[11px] [&_th]:font-black [&_th]:uppercase [&_th]:text-[#67554d] [&_td]:border-b [&_td]:border-[#ecd7cc] [&_td]:px-5 [&_td]:py-3.5 [&_td]:align-middle [&_tbody_tr:nth-child(even)]:bg-[#faf8f7]">
+        <table>
+          <thead>
+            <tr><th>Nama Barang</th><th>Jumlah Terjual</th><th>Total Keuntungan</th></tr>
+          </thead>
+          <tbody>
+            
+              <tr><td><strong>Busi Denso Iridium IX</strong></td><td>145 Unit</td><td class="money-orange font-extrabold text-[#b44f00]">Rp 8.700.000</td></tr>
+            
+              <tr><td><strong>Oli Castrol Power 1 1L</strong></td><td>112 Botol</td><td class="money-orange font-extrabold text-[#b44f00]">Rp 4.480.000</td></tr>
+            
+              <tr><td><strong>Kampas Rem Depan Brembo</strong></td><td>89 Set</td><td class="money-orange font-extrabold text-[#b44f00]">Rp 3.560.000</td></tr>
+            
+              <tr><td><strong>Ban Michelin Pilot Street</strong></td><td>54 Unit</td><td class="money-orange font-extrabold text-[#b44f00]">Rp 10.800.000</td></tr>
+            
+              <tr><td><strong>Aki GS Astra Maintenance Free</strong></td><td>42 Unit</td><td class="money-orange font-extrabold text-[#b44f00]">Rp 6.300.000</td></tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </section>
+  
+    
+    <section class="panel mb-6 overflow-hidden rounded-lg border border-[#efc8b6] bg-white shadow-[0_10px_24px_rgba(104,64,36,0.07)]">
+      <div class="panel-header flex min-h-16 items-center justify-between gap-4 border-b border-[#efc8b6] px-5 sm:px-6 [&_h3]:font-bold">
+        <h3>Analisis Profit Per Produk</h3>
+      </div>
+      <div class="table-wrap w-full overflow-x-auto [&_table]:w-full [&_table]:min-w-[700px] [&_table]:border-collapse [&_th]:bg-[#f0ecea] [&_th]:px-5 [&_th]:py-3.5 [&_th]:text-left [&_th]:text-[11px] [&_th]:font-black [&_th]:uppercase [&_th]:text-[#67554d] [&_td]:border-b [&_td]:border-[#ecd7cc] [&_td]:px-5 [&_td]:py-3.5 [&_td]:align-middle [&_tbody_tr:nth-child(even)]:bg-[#faf8f7]">
+        <table>
+          <thead>
+            <tr><th>Nama Barang</th><th>Jumlah Terjual</th><th>Total Omset</th><th>Total Keuntungan</th></tr>
+          </thead>
+          <tbody>
+            
+              <tr><td><strong>Oli Mesin</strong></td><td>320 Unit</td><td>Rp 26.240.000</td><td class="money-green font-extrabold text-green-600">Rp 11.840.000</td></tr>
+            
+              <tr><td><strong>Ban Motor</strong></td><td>250 Unit</td><td>Rp 37.500.000</td><td class="money-green font-extrabold text-green-600">Rp 12.500.000</td></tr>
+            
+              <tr><td><strong>Kampas Rem</strong></td><td>210 Unit</td><td>Rp 8.400.000</td><td class="money-green font-extrabold text-green-600">Rp 3.150.000</td></tr>
+            
+              <tr><td><strong>Aki Motor</strong></td><td>180 Unit</td><td>Rp 10.800.000</td><td class="money-green font-extrabold text-green-600">Rp 2.700.000</td></tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="toolbar-row px-6 pb-[22px] flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <span class="muted text-[#756862]">Menampilkan 4 dari 124 produk</span>
+        <div class="pagination flex flex-wrap items-center justify-end gap-2 p-4"><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">&lt;</button><button class="page-btn active grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50 border-[#ff7800] bg-[#ff7800] text-white">1</button><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">2</button><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">&gt;</button></div>
+      </div>
+    </section>
+  
+  </div>
+      </main>
+    </div>
+    <script src="/assets/sipart-ui.js"></script>
+    <script id="sipart-interactive">
+
+  const asset = (...parts) => ['assets', 'icons', ...parts].map(encodeURIComponent).join('/');
+  const icons = {
+    oli: asset('Produk & Kategori', 'oli.svg'),
+    ban: asset('Produk & Kategori', 'ban.svg'),
+    kampas: asset('Produk & Kategori', 'kampas_rem.svg'),
+    aki: asset('Produk & Kategori', 'aki.svg'),
+    mesin: asset('Produk & Kategori', 'mesin.svg'),
+    lampu: asset('Produk & Kategori', 'lampu.svg'),
+    edit: asset('Produk & Kategori', 'aksi_pensil.svg'),
+    trash: asset('Produk & Kategori', 'aksi_sampah.svg')
+  };
+  const api = async (url, options = {}) => {
+    const response = await fetch(url, {
+      ...options,
+      headers: { 'Content-Type': 'application/json', ...(options.headers || {}) }
+    });
+    if (!response.ok) {
+      let message = response.statusText || 'Request gagal';
+      try {
+        const body = await response.json();
+        message = body.detail || body.message || message;
+      } catch (error) {}
+      throw new Error(message);
+    }
+    return response.status === 204 ? null : response.json();
+  };
+  const safe = (value) => String(value ?? '').replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
+  const money = (value) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(Number(value || 0));
+  const numberOnly = (value) => Number(String(value || '').replace(/[^0-9]/g, '')) || 0;
+  const iconFor = (name) => icons[name] || icons.mesin;
+  const tagClass = (status) => {
+    const text = String(status || '').toLowerCase();
+    if (text.includes('match') || text.includes('selesai') || text.includes('aktif')) return 'green bg-green-100 text-green-700';
+    if (text.includes('pending') || text.includes('rendah')) return 'orange bg-orange-100 text-orange-700';
+    if (text.includes('kritis') || text.includes('difference') || text.includes('habis')) return 'red bg-red-100 text-red-700';
+    return 'blue bg-blue-100 text-blue-700';
+  };
+  function notify(message, danger = false) {
+    let toast = document.querySelector('.sipart-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'sipart-toast fixed right-4 bottom-4 z-[9999] max-w-[320px] rounded-lg px-[18px] py-3.5 font-extrabold text-white shadow-[0_16px_36px_rgba(0,0,0,.18)] transition sm:right-6 sm:bottom-6';
+      document.body.appendChild(toast);
+    }
+    toast.classList.remove('bg-red-600', 'bg-green-600');
+    toast.classList.add(danger ? 'bg-red-600' : 'bg-green-600');
+    toast.textContent = message;
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(() => toast.remove(), 2600);
+  }
+  function findPanel(title) {
+    return [...document.querySelectorAll('.panel')].find((panel) => panel.textContent.includes(title));
+  }
+  function miniIcon(iconName) {
+    return `<span class="product-icon-mini grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#f4efec] [&_img]:h-6 [&_img]:w-6"><img src="${iconFor(iconName)}" alt=""></span>`;
+  }
+
+  const activeButtonClasses = ['border-[#ff7800]', 'bg-[#ff7800]', 'text-white'];
+  function setActiveInGroup(container, selected) {
+    container.querySelectorAll('button').forEach((button) => {
+      const isActive = button === selected;
+      button.classList.toggle('active', isActive);
+      activeButtonClasses.forEach((className) => button.classList.toggle(className, isActive));
+    });
+  }
+  document.querySelectorAll('.pagination').forEach((pagination) => {
+    pagination.addEventListener('click', (event) => {
+      const selected = event.target.closest('.page-btn');
+      if (!selected) return;
+      const numberButtons = [...pagination.querySelectorAll('.page-btn')].filter((button) => /^\d+$/.test(button.textContent.trim()));
+      let target = selected;
+      if (!/^\d+$/.test(selected.textContent.trim())) {
+        const currentIndex = Math.max(0, numberButtons.findIndex((button) => button.classList.contains('active')));
+        const direction = selected.textContent.includes('<') ? -1 : 1;
+        target = numberButtons[Math.max(0, Math.min(numberButtons.length - 1, currentIndex + direction))];
+      }
+      if (target) {
+        setActiveInGroup(pagination, target);
+        notify('Halaman ' + target.textContent.trim() + ' dipilih');
+      }
+    });
+  });
+  document.querySelectorAll('.logout').forEach((link) => link.addEventListener('click', async (event) => {
+    event.preventDefault();
+    try { await api('/api/auth/logout', { method: 'POST' }); } catch (error) {}
+    notify('Sesi ditutup');
+    setTimeout(() => { window.location.href = '/login'; }, 500);
+  }));
+
+  async function loadDashboard() {
+    try {
+      const data = await api('/api/dashboard');
+      document.querySelectorAll('.stat-card .stat-value').forEach((node, index) => {
+        if (data.metrics[index]) node.textContent = data.metrics[index].value;
+      });
+      const lowBody = findPanel('Barang Hampir Habis')?.querySelector('tbody');
+      if (lowBody) {
+        lowBody.innerHTML = data.lowStock.map((item) => `
+          <tr>
+            <td><div class="product-name-row justify-start flex items-center gap-3">${miniIcon(item.icon)}<strong>${safe(item.name)}</strong></div></td>
+            <td>${item.stock}</td>
+            <td><span class="tag ${tagClass(item.status)} inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase">${safe(item.status)}</span></td>
+            <td><button class="primary-btn min-h-[34px] inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-[#ff7800] bg-[#ff7800] px-[18px] font-extrabold text-white shadow-[0_8px_18px_rgba(255,120,0,0.22)] transition hover:border-[#e56d00] hover:bg-[#e56d00] focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:cursor-not-allowed disabled:opacity-50" data-restock="${item.id}">Restock</button></td>
+          </tr>
+        `).join('');
+      }
+      const bestBody = findPanel('Barang Terlaris')?.querySelector('tbody');
+      if (bestBody) bestBody.innerHTML = data.bestSellers.map((item) => `<tr><td><strong>${safe(item.name)}</strong></td><td>${safe(item.sold)}</td><td class="money-orange font-extrabold text-[#b44f00]">${safe(item.profit)}</td></tr>`).join('');
+      window.dashboardPurchases = data.purchaseHistories || [];
+      renderDashboardPurchases();
+      const profitBody = findPanel('Analisis Profit')?.querySelector('tbody');
+      if (profitBody) bestBody;
+      if (profitBody) profitBody.innerHTML = data.profits.map((item) => `<tr><td><strong>${safe(item.name)}</strong></td><td>${safe(item.sold)}</td><td>${safe(item.revenue)}</td><td class="money-green font-extrabold text-green-600">${safe(item.profit)}</td></tr>`).join('');
+    } catch (error) {
+      notify(error.message, true);
+    }
+  }
+  let dashboardPurchaseStatus = '';
+  function renderDashboardPurchases() {
+    const tbody = document.querySelector('[data-purchase-history] tbody');
+    if (!tbody) return;
+    const rows = (window.dashboardPurchases || []).filter((item) => !dashboardPurchaseStatus || item.status === dashboardPurchaseStatus);
+    tbody.innerHTML = rows.map((item) => `<tr><td><strong>${safe(item.supplier)}</strong></td><td>${safe(item.item)}</td><td>${safe(item.date)}</td><td><strong>${safe(item.totalText)}</strong></td><td><span class="tag ${tagClass(item.status)} inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase">${safe(item.status)}</span></td></tr>`).join('');
+  }
+  document.querySelector('[data-purchase-filter]')?.addEventListener('click', (event) => {
+    const statuses = ['', 'Pending', 'Barang Datang', 'Selesai'];
+    dashboardPurchaseStatus = statuses[(statuses.indexOf(dashboardPurchaseStatus) + 1) % statuses.length];
+    event.currentTarget.textContent = dashboardPurchaseStatus || 'Semua Status';
+    renderDashboardPurchases();
+  });
+  document.addEventListener('click', async (event) => {
+    const button = event.target.closest('[data-restock]');
+    if (!button) return;
+    const values = await SipartUI.form({ title: 'Restock Produk', subtitle: 'Masukkan jumlah stok fisik terbaru.', submitLabel: 'Simpan Stok', fields: [{ name: 'stock', label: 'Stok Baru', type: 'number', value: 25, min: 0, full: true }] });
+    if (!values) return;
+    const stock = Number(values.stock);
+    try {
+      await api('/api/products/' + button.dataset.restock, { method: 'PATCH', body: JSON.stringify({ stock }) });
+      notify('Stok berhasil diperbarui');
+      loadDashboard();
+    } catch (error) {
+      notify(error.message, true);
+    }
+  });
+  document.querySelectorAll('.panel-link').forEach((button) => button.addEventListener('click', () => {
+    window.location.href = '/produk-kategori';
+  }));
+  document.querySelectorAll('.segmented button').forEach((button) => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.segmented button').forEach((item) => item.classList.remove('active'));
+      button.classList.add('active');
+      notify('Filter laporan: ' + button.textContent.trim());
+    });
+  });
+  loadDashboard();
+
+  </script>
+  </body>
+</html>

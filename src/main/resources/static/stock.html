@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stock - SIPART</title>
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="m-0 bg-[#f7f4f2] font-sans text-sm text-[#201a17] antialiased [&_button]:cursor-pointer">
+    <div class="app-shell min-h-screen bg-[#f7f4f2] lg:grid lg:grid-cols-[236px_minmax(0,1fr)]">
+      
+    <aside class="sidebar flex flex-col border-r border-[#ead8cf] bg-white p-4 lg:sticky lg:top-0 lg:h-screen lg:px-[18px] lg:py-7">
+      <div class="brand mb-5 px-2 lg:mb-8">
+        <div class="brand-name text-[15px] font-black leading-none text-[#ff7800]">SIPART</div>
+        <div class="brand-role mt-1.5 text-xs text-[#6f625c]">System Gudang</div>
+      </div>
+      <nav class="nav-list grid grid-cols-2 gap-2 sm:grid-cols-3 lg:flex lg:flex-col">
+        
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/dashboard">
+              <img src="assets/icons/Navigation/nav_dashboard.svg" alt="">
+              <span>Dashboard</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/produk-kategori">
+              <img src="assets/icons/Navigation/nav_produk_kategori.svg" alt="">
+              <span>Produk & Kategori</span>
+            </a>
+          
+            <a class="nav-item active flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5 bg-[#ff7800] text-[#2b1b11] shadow-sm hover:bg-[#ff7800] hover:text-[#2b1b11]" href="/stock">
+              <img src="assets/icons/Navigation/nav_stock_selected.svg" alt="">
+              <span>Stock</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/supplier">
+              <img src="assets/icons/Navigation/nav_supplier.svg" alt="">
+              <span>Supplier</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/transaksi-pembelian">
+              <img src="assets/icons/Navigation/nav_transaksi_pembelian.svg" alt="">
+              <span>Transaksi Pembelian</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/transaksi-penjualan">
+              <img src="assets/icons/Transaksi%20Penjualan/transaksipenjualan.svg" alt="">
+              <span>Transaksi Penjualan</span>
+            </a>
+          
+            <a class="nav-item flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5" href="/manajemen-user">
+              <img src="assets/icons/Navigation/nav_manajemen_user.svg" alt="">
+              <span>Manajemen User</span>
+            </a>
+          
+      </nav>
+      <div class="nav-spacer my-4 hidden h-px bg-[#ead8cf] lg:block"></div>
+      <a class="logout mt-3 flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline hover:bg-red-50 hover:text-red-700 lg:mt-auto [&_img]:h-5 [&_img]:w-5" href="#">
+        <img src="assets/icons/Navigation/nav_logout.svg" alt="">
+        <span>Logout</span>
+      </a>
+    </aside>
+  
+      <main class="page-shell min-w-0">
+        
+    <header class="topbar sticky top-0 z-30 flex min-h-[72px] flex-col gap-3 border-b border-[#ead8cf] bg-white/95 px-4 py-3 backdrop-blur sm:flex-row sm:items-center sm:justify-between md:px-7">
+      <label class="search flex h-[42px] w-full items-center gap-3 rounded-lg border border-[#efc8b6] bg-[#fffaf7] px-3.5 text-[#7a6b64] sm:max-w-[520px] [&_img]:h-5 [&_img]:w-5 [&_input]:min-w-0 [&_input]:flex-1 [&_input]:border-0 [&_input]:bg-transparent [&_input]:outline-none">
+        <img src="assets/icons/Stock%2C%20Transaksi%20Pembelian/carisparepart.svg" alt="">
+        <input type="search" placeholder="Cari sparepart...">
+      </label>
+      <div class="profile flex items-center gap-3 self-end whitespace-nowrap sm:self-auto">
+        <div>
+          <div class="profile-name text-right text-sm font-bold">Raihan Haryo</div>
+          <div class="online flex items-center justify-end gap-1 text-[11px] text-[#6f625c]"><span class="online-dot h-2 w-2 rounded-full bg-green-600"></span>Online</div>
+        </div>
+        <div class="avatar grid h-[38px] w-[38px] place-items-center rounded-full border-2 border-[#d6a17b] bg-[#263544] text-[11px] font-black text-white shadow-sm" aria-label="Avatar Raihan Haryo">RH</div>
+      </div>
+    </header>
+  
+        <div class="content mx-auto w-full max-w-[1500px] p-4 sm:p-6 md:px-7">
+    <div class="page-title-row mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between [&_h1]:text-[26px] [&_h1]:font-black [&_h1]:leading-tight [&_h2]:text-xl [&_h2]:font-black">
+      <div>
+        <h1>Stock Opname</h1>
+        <p class="page-subtitle mt-1 text-[13px] text-[#6f625c]">Kelola stok fisik gudang dan bandingkan dengan data stok sistem secara realtime.</p>
+      </div>
+    </div>
+    <div class="stat-grid mb-6 grid grid-cols-1 gap-[18px] sm:grid-cols-2 xl:grid-cols-4">
+      
+    <article class="metric-card relative flex min-h-[150px] flex-col justify-between overflow-hidden rounded-lg border border-[#efc8b6] bg-white p-5 shadow-[0_12px_28px_rgba(104,64,36,0.09)]">
+      <div class="metric-top flex items-start justify-between gap-3">
+        <div class="metric-icon-box grid h-[52px] w-[52px] shrink-0 place-items-center rounded-lg bg-[#fff0e6] [&_img]:h-7 [&_img]:w-7"><img src="assets/icons/Stock%2C%20Transaksi%20Pembelian/stokbarang.svg" alt=""></div>
+        
+      </div>
+      <div>
+        <div class="stat-label mb-3 text-sm text-[#6f625c]">Total Barang Dicek</div>
+        <div class="stat-value text-[28px] font-black leading-none text-[#201a17]">1,240</div>
+        <div class="stat-sub mt-2 text-[11px] text-[#6f625c]">1,2% dari sesi terakhir</div>
+      </div>
+    </article>
+  
+      
+    <article class="metric-card relative flex min-h-[150px] flex-col justify-between overflow-hidden rounded-lg border border-[#efc8b6] bg-white p-5 shadow-[0_12px_28px_rgba(104,64,36,0.09)]">
+      <div class="metric-top flex items-start justify-between gap-3">
+        <div class="metric-icon-box red grid h-[52px] w-[52px] shrink-0 place-items-center rounded-lg bg-[#fff0e6] [&_img]:h-7 [&_img]:w-7 bg-red-50"><img src="assets/icons/Stock%2C%20Transaksi%20Pembelian/totalselisihstock.svg" alt=""></div>
+        
+      </div>
+      <div>
+        <div class="stat-label mb-3 text-sm text-[#6f625c]">Total Selisih Stock</div>
+        <div class="stat-value text-[28px] font-black leading-none text-[#201a17]">42</div>
+        <div class="stat-sub mt-2 text-[11px] text-[#6f625c]"><strong>4,2%</strong> tingkat perbedaan</div>
+      </div>
+    </article>
+  
+      
+    <article class="metric-card relative flex min-h-[150px] flex-col justify-between overflow-hidden rounded-lg border border-[#efc8b6] bg-white p-5 shadow-[0_12px_28px_rgba(104,64,36,0.09)]">
+      <div class="metric-top flex items-start justify-between gap-3">
+        <div class="metric-icon-box blue grid h-[52px] w-[52px] shrink-0 place-items-center rounded-lg bg-[#fff0e6] [&_img]:h-7 [&_img]:w-7 bg-blue-50"><img src="assets/icons/Stock%2C%20Transaksi%20Pembelian/barangsesuai.svg" alt=""></div>
+        
+      </div>
+      <div>
+        <div class="stat-label mb-3 text-sm text-[#6f625c]">Barang Sesuai</div>
+        <div class="stat-value text-[28px] font-black leading-none text-[#201a17]">249</div>
+        <div class="stat-sub mt-2 text-[11px] text-[#6f625c]"><span class='green'>96,6%</span> akurasi</div>
+      </div>
+    </article>
+  
+      
+    <article class="metric-card relative flex min-h-[150px] flex-col justify-between overflow-hidden rounded-lg border border-[#efc8b6] bg-white p-5 shadow-[0_12px_28px_rgba(104,64,36,0.09)]">
+      <div class="metric-top flex items-start justify-between gap-3">
+        <div class="metric-icon-box grid h-[52px] w-[52px] shrink-0 place-items-center rounded-lg bg-[#fff0e6] [&_img]:h-7 [&_img]:w-7"><img src="assets/icons/Stock%2C%20Transaksi%20Pembelian/barangbermasalah.svg" alt=""></div>
+        
+      </div>
+      <div>
+        <div class="stat-label mb-3 text-sm text-[#6f625c]">Barang Bermasalah</div>
+        <div class="stat-value text-[28px] font-black leading-none text-[#201a17]">08</div>
+        <div class="stat-sub mt-2 text-[11px] text-[#6f625c]"><strong>8 item</strong> perlu investigasi</div>
+      </div>
+    </article>
+  
+    </div>
+    <section class="panel mb-6 overflow-hidden rounded-lg border border-[#efc8b6] bg-white shadow-[0_10px_24px_rgba(104,64,36,0.07)]">
+      <div class="panel-header soft flex min-h-16 items-center justify-between gap-4 border-b border-[#efc8b6] px-5 sm:px-6 [&_h3]:font-bold bg-[#fff0e7]">
+        <h3>Input Stock Berkala</h3>
+        <strong class="money-orange font-extrabold text-[#b44f00]">ID: SO-202311-001</strong>
+      </div>
+      <div class="stock-form grid gap-4 p-5 sm:grid-cols-2 sm:p-6">
+        <label class="field flex flex-col gap-1.5 [&_label]:text-[11px] [&_label]:font-bold [&_input]:h-11 [&_input]:rounded-lg [&_input]:border [&_input]:border-[#e8c8b8] [&_input]:bg-[#fffaf7] [&_input]:px-3.5 [&_input]:outline-none [&_input]:focus:border-orange-400 [&_select]:h-11 [&_select]:rounded-lg [&_select]:border [&_select]:border-[#e8c8b8] [&_select]:bg-white [&_select]:px-3.5 [&_select]:outline-none [&_select]:focus:border-orange-400 [&_textarea]:min-h-24 [&_textarea]:rounded-lg [&_textarea]:border [&_textarea]:border-[#e8c8b8] [&_textarea]:bg-[#fffaf7] [&_textarea]:p-3.5 [&_textarea]:outline-none [&_textarea]:focus:border-orange-400"><span>Supplier</span><select><option>Pilih Supplier</option></select></label>
+        <label class="field flex flex-col gap-1.5 [&_label]:text-[11px] [&_label]:font-bold [&_input]:h-11 [&_input]:rounded-lg [&_input]:border [&_input]:border-[#e8c8b8] [&_input]:bg-[#fffaf7] [&_input]:px-3.5 [&_input]:outline-none [&_input]:focus:border-orange-400 [&_select]:h-11 [&_select]:rounded-lg [&_select]:border [&_select]:border-[#e8c8b8] [&_select]:bg-white [&_select]:px-3.5 [&_select]:outline-none [&_select]:focus:border-orange-400 [&_textarea]:min-h-24 [&_textarea]:rounded-lg [&_textarea]:border [&_textarea]:border-[#e8c8b8] [&_textarea]:bg-[#fffaf7] [&_textarea]:p-3.5 [&_textarea]:outline-none [&_textarea]:focus:border-orange-400"><span>Pilih Barang</span><select><option>Pilih Barang</option></select></label>
+        <label class="field flex flex-col gap-1.5 [&_label]:text-[11px] [&_label]:font-bold [&_input]:h-11 [&_input]:rounded-lg [&_input]:border [&_input]:border-[#e8c8b8] [&_input]:bg-[#fffaf7] [&_input]:px-3.5 [&_input]:outline-none [&_input]:focus:border-orange-400 [&_select]:h-11 [&_select]:rounded-lg [&_select]:border [&_select]:border-[#e8c8b8] [&_select]:bg-white [&_select]:px-3.5 [&_select]:outline-none [&_select]:focus:border-orange-400 [&_textarea]:min-h-24 [&_textarea]:rounded-lg [&_textarea]:border [&_textarea]:border-[#e8c8b8] [&_textarea]:bg-[#fffaf7] [&_textarea]:p-3.5 [&_textarea]:outline-none [&_textarea]:focus:border-orange-400"><span>Stok Sistem (Read-only)</span><input value="150" readonly></label>
+        <label class="field flex flex-col gap-1.5 [&_label]:text-[11px] [&_label]:font-bold [&_input]:h-11 [&_input]:rounded-lg [&_input]:border [&_input]:border-[#e8c8b8] [&_input]:bg-[#fffaf7] [&_input]:px-3.5 [&_input]:outline-none [&_input]:focus:border-orange-400 [&_select]:h-11 [&_select]:rounded-lg [&_select]:border [&_select]:border-[#e8c8b8] [&_select]:bg-white [&_select]:px-3.5 [&_select]:outline-none [&_select]:focus:border-orange-400 [&_textarea]:min-h-24 [&_textarea]:rounded-lg [&_textarea]:border [&_textarea]:border-[#e8c8b8] [&_textarea]:bg-[#fffaf7] [&_textarea]:p-3.5 [&_textarea]:outline-none [&_textarea]:focus:border-orange-400"><span>Stok Fisik</span><input placeholder="Masukkan jumlah fisik..."></label>
+        <div class="form-actions flex flex-wrap justify-end gap-3 border-t border-[#efc8b6] pt-4 sm:col-span-2">
+          <button class="ghost-btn inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-[#e4a77f] bg-[#fffaf7] px-[18px] font-extrabold text-[#a34908] transition hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-200">Batal</button>
+          <button class="primary-btn inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-[#ff7800] bg-[#ff7800] px-[18px] font-extrabold text-white shadow-[0_8px_18px_rgba(255,120,0,0.22)] transition hover:border-[#e56d00] hover:bg-[#e56d00] focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:cursor-not-allowed disabled:opacity-50">Konfirmasi Barang</button>
+        </div>
+      </div>
+    </section>
+    <section class="panel mb-6 overflow-hidden rounded-lg border border-[#efc8b6] bg-white shadow-[0_10px_24px_rgba(104,64,36,0.07)]">
+      <div class="panel-header flex min-h-16 items-center justify-between gap-4 border-b border-[#efc8b6] px-5 sm:px-6 [&_h3]:font-bold">
+        <h3>Perbandingan Stock</h3>
+        <label class="search h-[38px] w-[220px] flex h-[42px] w-full items-center gap-3 rounded-lg border border-[#efc8b6] bg-[#fffaf7] px-3.5 text-[#7a6b64] sm:max-w-[520px] [&_img]:h-5 [&_img]:w-5 [&_input]:min-w-0 [&_input]:flex-1 [&_input]:border-0 [&_input]:bg-transparent [&_input]:outline-none"><img src="assets/icons/Stock%2C%20Transaksi%20Pembelian/filter.svg" alt=""><input placeholder="Filter barang..."></label>
+      </div>
+      <div class="table-wrap w-full overflow-x-auto [&_table]:w-full [&_table]:min-w-[700px] [&_table]:border-collapse [&_th]:bg-[#f0ecea] [&_th]:px-5 [&_th]:py-3.5 [&_th]:text-left [&_th]:text-[11px] [&_th]:font-black [&_th]:uppercase [&_th]:text-[#67554d] [&_td]:border-b [&_td]:border-[#ecd7cc] [&_td]:px-5 [&_td]:py-3.5 [&_td]:align-middle [&_tbody_tr:nth-child(even)]:bg-[#faf8f7]">
+        <table>
+          <thead>
+            <tr><th>Nama Barang</th><th>Stok Gudang</th><th>Stock Opname</th><th>Selisih</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td><strong>Ban IRC NR82 - 90/90-14</strong><div class="sku text-[10px] text-[#756862]">TIRE-IRC-01</div></td>
+                <td>45 Unit</td>
+                <td>45 Unit</td>
+                <td class="">0</td>
+                <td><span class="tag blue inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase bg-blue-100 text-blue-700">MATCH</span></td>
+                <td><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5" aria-label="Menu">...</button></td>
+              </tr>
+            
+              <tr>
+                <td><strong>Aki Kering GS Astra</strong><div class="sku text-[10px] text-[#756862]">BAT-GS-N540</div></td>
+                <td>150 Unit</td>
+                <td>138 Unit</td>
+                <td class="number-red font-extrabold text-red-600">-12</td>
+                <td><span class="tag red inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase bg-red-100 text-red-700">DIFFERENCE</span></td>
+                <td><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5" aria-label="Menu">...</button></td>
+              </tr>
+            
+              <tr>
+                <td><strong>Busi NGK Iridium</strong><div class="sku text-[10px] text-[#756862]">PLG-NGK-IR</div></td>
+                <td>80 Unit</td>
+                <td>--</td>
+                <td class="number-red font-extrabold text-red-600">--</td>
+                <td><span class="tag orange inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase bg-orange-100 text-orange-700">PENDING</span></td>
+                <td><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5" aria-label="Menu">...</button></td>
+              </tr>
+            
+              <tr>
+                <td><strong>V-Belt Honda Vario</strong><div class="sku text-[10px] text-[#756862]">BELT-HND-VR</div></td>
+                <td>25 Unit</td>
+                <td>25 Unit</td>
+                <td class="">0</td>
+                <td><span class="tag blue inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase bg-blue-100 text-blue-700">MATCH</span></td>
+                <td><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5" aria-label="Menu">...</button></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="toolbar-row px-6 pb-[22px] flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <span class="muted text-[#756862]">Menampilkan 4 dari 1,240 item</span>
+        <div class="pagination flex flex-wrap items-center justify-end gap-2 p-4"><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">&lt;</button><button class="page-btn active grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50 border-[#ff7800] bg-[#ff7800] text-white">1</button><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">2</button><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">3</button><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">&gt;</button></div>
+      </div>
+    </section>
+  </div>
+      </main>
+    </div>
+    <script src="/assets/sipart-ui.js"></script>
+    <script id="sipart-interactive">
+
+  const asset = (...parts) => ['assets', 'icons', ...parts].map(encodeURIComponent).join('/');
+  const icons = {
+    oli: asset('Produk & Kategori', 'oli.svg'),
+    ban: asset('Produk & Kategori', 'ban.svg'),
+    kampas: asset('Produk & Kategori', 'kampas_rem.svg'),
+    aki: asset('Produk & Kategori', 'aki.svg'),
+    mesin: asset('Produk & Kategori', 'mesin.svg'),
+    lampu: asset('Produk & Kategori', 'lampu.svg'),
+    edit: asset('Produk & Kategori', 'aksi_pensil.svg'),
+    trash: asset('Produk & Kategori', 'aksi_sampah.svg')
+  };
+  const api = async (url, options = {}) => {
+    const response = await fetch(url, {
+      ...options,
+      headers: { 'Content-Type': 'application/json', ...(options.headers || {}) }
+    });
+    if (!response.ok) {
+      let message = response.statusText || 'Request gagal';
+      try {
+        const body = await response.json();
+        message = body.detail || body.message || message;
+      } catch (error) {}
+      throw new Error(message);
+    }
+    return response.status === 204 ? null : response.json();
+  };
+  const safe = (value) => String(value ?? '').replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
+  const money = (value) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(Number(value || 0));
+  const numberOnly = (value) => Number(String(value || '').replace(/[^0-9]/g, '')) || 0;
+  const iconFor = (name) => icons[name] || icons.mesin;
+  const tagClass = (status) => {
+    const text = String(status || '').toLowerCase();
+    if (text.includes('match') || text.includes('selesai') || text.includes('aktif')) return 'green bg-green-100 text-green-700';
+    if (text.includes('pending') || text.includes('rendah')) return 'orange bg-orange-100 text-orange-700';
+    if (text.includes('kritis') || text.includes('difference') || text.includes('habis')) return 'red bg-red-100 text-red-700';
+    return 'blue bg-blue-100 text-blue-700';
+  };
+  function notify(message, danger = false) {
+    let toast = document.querySelector('.sipart-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'sipart-toast fixed right-4 bottom-4 z-[9999] max-w-[320px] rounded-lg px-[18px] py-3.5 font-extrabold text-white shadow-[0_16px_36px_rgba(0,0,0,.18)] transition sm:right-6 sm:bottom-6';
+      document.body.appendChild(toast);
+    }
+    toast.classList.remove('bg-red-600', 'bg-green-600');
+    toast.classList.add(danger ? 'bg-red-600' : 'bg-green-600');
+    toast.textContent = message;
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(() => toast.remove(), 2600);
+  }
+  function findPanel(title) {
+    return [...document.querySelectorAll('.panel')].find((panel) => panel.textContent.includes(title));
+  }
+  function miniIcon(iconName) {
+    return `<span class="product-icon-mini grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#f4efec] [&_img]:h-6 [&_img]:w-6"><img src="${iconFor(iconName)}" alt=""></span>`;
+  }
+
+  const activeButtonClasses = ['border-[#ff7800]', 'bg-[#ff7800]', 'text-white'];
+  function setActiveInGroup(container, selected) {
+    container.querySelectorAll('button').forEach((button) => {
+      const isActive = button === selected;
+      button.classList.toggle('active', isActive);
+      activeButtonClasses.forEach((className) => button.classList.toggle(className, isActive));
+    });
+  }
+  document.querySelectorAll('.pagination').forEach((pagination) => {
+    pagination.addEventListener('click', (event) => {
+      const selected = event.target.closest('.page-btn');
+      if (!selected) return;
+      const numberButtons = [...pagination.querySelectorAll('.page-btn')].filter((button) => /^\d+$/.test(button.textContent.trim()));
+      let target = selected;
+      if (!/^\d+$/.test(selected.textContent.trim())) {
+        const currentIndex = Math.max(0, numberButtons.findIndex((button) => button.classList.contains('active')));
+        const direction = selected.textContent.includes('<') ? -1 : 1;
+        target = numberButtons[Math.max(0, Math.min(numberButtons.length - 1, currentIndex + direction))];
+      }
+      if (target) {
+        setActiveInGroup(pagination, target);
+        notify('Halaman ' + target.textContent.trim() + ' dipilih');
+      }
+    });
+  });
+  document.querySelectorAll('.logout').forEach((link) => link.addEventListener('click', async (event) => {
+    event.preventDefault();
+    try { await api('/api/auth/logout', { method: 'POST' }); } catch (error) {}
+    notify('Sesi ditutup');
+    setTimeout(() => { window.location.href = '/login'; }, 500);
+  }));
+
+  let stockProducts = [];
+  let stockChecksCache = [];
+  async function loadStock() {
+    try {
+      const [products, checks, suppliers] = await Promise.all([api('/api/products'), api('/api/stock'), api('/api/suppliers')]);
+      stockProducts = products;
+      stockChecksCache = checks;
+      fillStockSelects(products, suppliers);
+      renderStockMetrics(products, checks);
+      renderStockRows(checks);
+    } catch (error) {
+      notify(error.message, true);
+    }
+  }
+  function fillStockSelects(products, suppliers) {
+    const selects = document.querySelectorAll('.stock-form select');
+    const supplierSelect = selects[0];
+    const productSelect = selects[1];
+    if (supplierSelect && supplierSelect.options.length <= 1) supplierSelect.innerHTML = '<option value="">Pilih Supplier</option>' + suppliers.map((item) => `<option>${safe(item.name)}</option>`).join('');
+    if (productSelect) {
+      const selected = productSelect.value;
+      productSelect.innerHTML = '<option value="">Pilih Barang</option>' + products.map((item) => `<option value="${item.id}">${safe(item.name)}</option>`).join('');
+      if (selected) productSelect.value = selected;
+      updateSystemStock();
+    }
+  }
+  function updateSystemStock() {
+    const productId = Number(document.querySelectorAll('.stock-form select')[1]?.value);
+    const product = stockProducts.find((item) => item.id === productId);
+    const systemInput = document.querySelector('.stock-form input[readonly]');
+    if (systemInput) systemInput.value = product ? product.stock : '';
+  }
+  function renderStockMetrics(products, checks) {
+    const values = document.querySelectorAll('.metric-card .stat-value');
+    if (values[0]) values[0].textContent = products.length.toLocaleString('id-ID');
+    if (values[1]) values[1].textContent = checks.filter((item) => item.status === 'DIFFERENCE').length;
+    if (values[2]) values[2].textContent = checks.filter((item) => item.status === 'MATCH').length;
+    if (values[3]) values[3].textContent = checks.filter((item) => item.status !== 'MATCH').length;
+  }
+  function renderStockRows(checks) {
+    const panel = findPanel('Perbandingan Stock');
+    const tbody = panel?.querySelector('tbody');
+    const search = panel?.querySelector('.search input')?.value?.toLowerCase() || '';
+    if (!tbody) return;
+    tbody.innerHTML = checks.filter((item) => item.name.toLowerCase().includes(search)).map((item) => `<tr><td><strong>${safe(item.name)}</strong><div class="sku text-[10px] text-[#756862]">${safe(item.sku)}</div></td><td>${item.systemStock} Unit</td><td>${item.physicalStock ?? '--'} Unit</td><td class="${(item.difference || 0) < 0 ? 'number-red font-extrabold text-red-600' : ''}">${item.difference ?? '--'}</td><td><span class="tag ${tagClass(item.status)} inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase">${safe(item.status)}</span></td><td><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5" aria-label="Menu">...</button></td></tr>`).join('');
+  }
+  document.querySelectorAll('.stock-form select')[1]?.addEventListener('change', updateSystemStock);
+  document.querySelector('.stock-form .ghost-btn')?.addEventListener('click', () => {
+    const form = document.querySelector('.stock-form');
+    form?.querySelectorAll('select').forEach((select) => { select.selectedIndex = 0; });
+    form?.querySelectorAll('input').forEach((input) => { if (!input.readOnly) input.value = ''; });
+    notify('Form stock dibersihkan');
+  });
+  document.querySelector('.stock-form .primary-btn')?.addEventListener('click', async () => {
+    const productId = Number(document.querySelectorAll('.stock-form select')[1]?.value);
+    const physicalStock = Number(document.querySelector('.stock-form input[placeholder]')?.value);
+    if (!productId || !Number.isFinite(physicalStock)) return notify('Pilih barang dan isi stok fisik.', true);
+    try {
+      await api('/api/stock', { method: 'POST', body: JSON.stringify({ productId, physicalStock }) });
+      notify('Stock opname tersimpan');
+      loadStock();
+    } catch (error) {
+      notify(error.message, true);
+    }
+  });
+  findPanel('Perbandingan Stock')?.querySelector('.search input')?.addEventListener('input', () => renderStockRows(stockChecksCache));
+  loadStock();
+
+  </script>
+  </body>
+</html>

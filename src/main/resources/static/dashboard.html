@@ -16,7 +16,7 @@
       </div>
       <nav class="nav-list grid grid-cols-2 gap-2 sm:grid-cols-3 lg:flex lg:flex-col">
         
-            <a class="nav-item active flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5 bg-[#ff7800] text-[#2b1b11] shadow-sm hover:bg-[#ff7800] hover:text-[#2b1b11]" href="/dashboard">
+            <a class="nav-item active flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5 bg-[#ff7800] text-[#2b1b11] shadow-sm hover:bg-[#d95f00] hover:text-white" href="/dashboard">
               <img src="assets/icons/Navigation/nav_dashboard_selected.svg" alt="">
               <span>Dashboard</span>
             </a>
@@ -79,17 +79,28 @@
     <div class="dashboard-intro page-title-row items-center mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between [&_h1]:text-[26px] [&_h1]:font-black [&_h1]:leading-tight [&_h2]:text-xl [&_h2]:font-black">
       <div>
         <p class="eyebrow font-extrabold text-[#5f4133]">Dashboard Sistem</p>
-        <p class="page-subtitle mt-1 text-[13px] text-[#6f625c]">Ikhtisar performa inventaris dan transaksi hari ini.</p>
+        <p class="page-subtitle mt-1 text-[13px] text-[#6f625c]">Ikhtisar performa inventaris dan transaksi berdasarkan periode laporan.</p>
       </div>
       <span class="mode inline-flex items-center rounded-full bg-[#ffe3cc] px-3 py-1 text-xs font-bold text-[#9a4600]">Mode Atur Ulang Aktif</span>
     </div>
-    <div class="section-title-row mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-      <h2 class="eyebrow font-extrabold text-[#5f4133]">Laporan Keuntungan</h2>
-      <div class="segmented inline-flex flex-wrap items-center rounded-full bg-[#f1e9e5] p-1 [&_button]:rounded-full [&_button]:px-4 [&_button]:py-2 [&_button]:text-sm [&_button]:font-semibold [&_button]:text-[#5d504a] [&_button.active]:bg-white [&_button.active]:text-[#b44f00] [&_button.active]:shadow-sm" aria-label="Filter laporan">
-        <button class="active">Harian</button>
-        <button>Mingguan</button>
-        <button>Bulanan</button>
-        <button>Tahunan</button>
+    <div class="section-title-row mb-4 flex flex-col gap-3 xl:flex-row xl:items-end xl:justify-between">
+      <div>
+        <h2 class="eyebrow font-extrabold text-[#5f4133]">Laporan Keuntungan</h2>
+        <p class="mt-1 text-xs font-semibold text-[#756862]" data-period-label>Periode hari ini</p>
+      </div>
+      <div class="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">
+        <div class="segmented inline-flex flex-wrap items-center rounded-full bg-[#eee8e5] p-1 [&_button]:rounded-full [&_button]:px-4 [&_button]:py-2 [&_button]:text-sm [&_button]:font-semibold [&_button]:text-[#5d504a] [&_button]:transition [&_button:hover]:bg-white [&_button:hover]:text-[#8f3d00] [&_button.active]:bg-[#9a4600] [&_button.active]:text-white [&_button.active]:shadow-sm [&_button.active:hover]:bg-[#713400]" aria-label="Filter laporan">
+          <button type="button" class="active" data-report-period="daily">Harian</button>
+          <button type="button" data-report-period="weekly">Mingguan</button>
+          <button type="button" data-report-period="monthly">Bulanan</button>
+          <button type="button" data-report-period="yearly">Tahunan</button>
+        </div>
+        <form class="flex flex-wrap items-center gap-2" data-date-filter>
+          <input class="h-10 min-w-[142px] rounded-lg border border-[#d8b29d] bg-white px-3 text-xs font-semibold text-[#4f433e] outline-none transition focus:border-[#b44f00] focus:ring-2 focus:ring-orange-100" type="date" name="from" aria-label="Tanggal awal">
+          <span class="text-xs font-bold text-[#756862]">sampai</span>
+          <input class="h-10 min-w-[142px] rounded-lg border border-[#d8b29d] bg-white px-3 text-xs font-semibold text-[#4f433e] outline-none transition focus:border-[#b44f00] focus:ring-2 focus:ring-orange-100" type="date" name="to" aria-label="Tanggal akhir">
+          <button class="h-10 rounded-lg border border-[#9a4600] bg-white px-4 text-xs font-extrabold text-[#8f3d00] transition hover:bg-[#9a4600] hover:text-white focus:outline-none focus:ring-2 focus:ring-orange-200" type="submit">Terapkan</button>
+        </form>
       </div>
     </div>
     <div class="stat-grid mb-6 grid grid-cols-1 gap-[18px] sm:grid-cols-2 xl:grid-cols-4">
@@ -133,7 +144,7 @@
     <div class="panel mb-6 overflow-hidden rounded-lg border border-[#efc8b6] bg-white shadow-[0_10px_24px_rgba(104,64,36,0.07)]">
       <div class="panel-header flex min-h-16 items-center justify-between gap-4 border-b border-[#efc8b6] px-5 sm:px-6 [&_h3]:font-bold">
         <h3>Barang Hampir Habis</h3>
-        <button class="panel-link font-bold text-[#b44f00] hover:text-[#ff7800]">Lihat Semua</button>
+        <button class="panel-link font-bold text-[#a34908] transition hover:text-[#713400] hover:underline">Lihat Semua</button>
       </div>
       <div class="table-wrap w-full overflow-x-auto [&_table]:w-full [&_table]:min-w-[700px] [&_table]:border-collapse [&_th]:bg-[#f0ecea] [&_th]:px-5 [&_th]:py-3.5 [&_th]:text-left [&_th]:text-[11px] [&_th]:font-black [&_th]:uppercase [&_th]:text-[#67554d] [&_td]:border-b [&_td]:border-[#ecd7cc] [&_td]:px-5 [&_td]:py-3.5 [&_td]:align-middle [&_tbody_tr:nth-child(even)]:bg-[#faf8f7]">
         <table class="compact [&_table]:min-w-[620px] [&_td]:py-3">
@@ -180,11 +191,27 @@
         </table>
       </div>
     </section>
+
+    <section class="panel mb-6 overflow-hidden rounded-lg border border-[#efc8b6] bg-white shadow-[0_10px_24px_rgba(104,64,36,0.07)]" data-sales-report>
+      <div class="panel-header flex min-h-16 items-center justify-between gap-4 border-b border-[#efc8b6] px-5 sm:px-6 [&_h3]:font-bold">
+        <div>
+          <h3>Laporan Penjualan</h3>
+          <p class="mt-1 text-xs text-[#756862]">Transaksi pada periode laporan yang dipilih</p>
+        </div>
+        <span class="rounded-full bg-blue-50 px-3 py-1 text-[10px] font-black uppercase text-blue-700" data-sales-count>0 transaksi</span>
+      </div>
+      <div class="table-wrap w-full overflow-x-auto [&_table]:w-full [&_table]:min-w-[760px] [&_table]:border-collapse [&_th]:bg-[#f0ecea] [&_th]:px-5 [&_th]:py-3.5 [&_th]:text-left [&_th]:text-[11px] [&_th]:font-black [&_th]:uppercase [&_th]:text-[#67554d] [&_td]:border-b [&_td]:border-[#ecd7cc] [&_td]:px-5 [&_td]:py-3.5 [&_td]:align-middle [&_tbody_tr:nth-child(even)]:bg-[#faf8f7]">
+        <table>
+          <thead><tr><th>Invoice</th><th>Produk</th><th>Metode</th><th>Tanggal</th><th>Total</th><th>Status</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
     
     <section class="panel mb-6 overflow-hidden rounded-lg border border-[#efc8b6] bg-white shadow-[0_10px_24px_rgba(104,64,36,0.07)]">
       <div class="panel-header flex min-h-16 items-center justify-between gap-4 border-b border-[#efc8b6] px-5 sm:px-6 [&_h3]:font-bold">
         <h3>Barang Terlaris</h3>
-        <button class="panel-link font-bold text-[#b44f00] hover:text-[#ff7800]">Lihat Semua</button>
+        <button class="panel-link font-bold text-[#a34908] transition hover:text-[#713400] hover:underline">Lihat Semua</button>
       </div>
       <div class="table-wrap w-full overflow-x-auto [&_table]:w-full [&_table]:min-w-[700px] [&_table]:border-collapse [&_th]:bg-[#f0ecea] [&_th]:px-5 [&_th]:py-3.5 [&_th]:text-left [&_th]:text-[11px] [&_th]:font-black [&_th]:uppercase [&_th]:text-[#67554d] [&_td]:border-b [&_td]:border-[#ecd7cc] [&_td]:px-5 [&_td]:py-3.5 [&_td]:align-middle [&_tbody_tr:nth-child(even)]:bg-[#faf8f7]">
         <table>
@@ -233,7 +260,7 @@
       </div>
       <div class="toolbar-row px-6 pb-[22px] flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <span class="muted text-[#756862]">Menampilkan 4 dari 124 produk</span>
-        <div class="pagination flex flex-wrap items-center justify-end gap-2 p-4"><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">&lt;</button><button class="page-btn active grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50 border-[#ff7800] bg-[#ff7800] text-white">1</button><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">2</button><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">&gt;</button></div>
+        <div class="pagination flex flex-wrap items-center justify-end gap-2 p-4"><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">&lt;</button><button class="page-btn active grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-[#e56d00] hover:text-white border-[#ff7800] bg-[#ff7800] text-white">1</button><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">2</button><button class="page-btn grid h-9 min-w-9 place-items-center rounded-md border border-[#efc8b6] bg-white px-2 text-xs font-bold text-[#5f514b] hover:bg-orange-50">&gt;</button></div>
       </div>
     </section>
   
@@ -300,7 +327,7 @@
     return `<span class="product-icon-mini grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#f4efec] [&_img]:h-6 [&_img]:w-6"><img src="${iconFor(iconName)}" alt=""></span>`;
   }
 
-  const activeButtonClasses = ['border-[#ff7800]', 'bg-[#ff7800]', 'text-white'];
+  const activeButtonClasses = ['border-[#ff7800]', 'bg-[#ff7800]', 'text-white', 'hover:bg-[#e56d00]', 'hover:text-white'];
   function setActiveInGroup(container, selected) {
     container.querySelectorAll('button').forEach((button) => {
       const isActive = button === selected;
@@ -332,30 +359,42 @@
     setTimeout(() => { window.location.href = '/login'; }, 500);
   }));
 
+  let dashboardPeriod = 'daily';
+  let dashboardFrom = '';
+  let dashboardTo = '';
+
   async function loadDashboard() {
     try {
-      const data = await api('/api/dashboard');
+      const query = new URLSearchParams({ period: dashboardPeriod });
+      if (dashboardFrom) query.set('from', dashboardFrom);
+      if (dashboardTo) query.set('to', dashboardTo);
+      const data = await api('/api/dashboard?' + query.toString());
       document.querySelectorAll('.stat-card .stat-value').forEach((node, index) => {
         if (data.metrics[index]) node.textContent = data.metrics[index].value;
       });
+      const periodLabel = document.querySelector('[data-period-label]');
+      if (periodLabel) {
+        const labels = { daily: 'Periode hari ini', weekly: 'Periode minggu ini', monthly: 'Periode bulan ini', yearly: 'Periode tahun ini', custom: `Periode ${data.from || ''} sampai ${data.to || ''}` };
+        periodLabel.textContent = labels[data.period] || 'Seluruh periode';
+      }
       const lowBody = findPanel('Barang Hampir Habis')?.querySelector('tbody');
       if (lowBody) {
-        lowBody.innerHTML = data.lowStock.map((item) => `
+        lowBody.innerHTML = data.lowStock.length ? data.lowStock.map((item) => `
           <tr>
             <td><div class="product-name-row justify-start flex items-center gap-3">${miniIcon(item.icon)}<strong>${safe(item.name)}</strong></div></td>
             <td>${item.stock}</td>
             <td><span class="tag ${tagClass(item.status)} inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase">${safe(item.status)}</span></td>
             <td><button class="primary-btn min-h-[34px] inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-[#ff7800] bg-[#ff7800] px-[18px] font-extrabold text-white shadow-[0_8px_18px_rgba(255,120,0,0.22)] transition hover:border-[#e56d00] hover:bg-[#e56d00] focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:cursor-not-allowed disabled:opacity-50" data-restock="${item.id}">Restock</button></td>
           </tr>
-        `).join('');
+        `).join('') : '<tr><td colspan="4" class="py-8 text-center text-[#756862]">Tidak ada produk dengan stok kritis.</td></tr>';
       }
       const bestBody = findPanel('Barang Terlaris')?.querySelector('tbody');
-      if (bestBody) bestBody.innerHTML = data.bestSellers.map((item) => `<tr><td><strong>${safe(item.name)}</strong></td><td>${safe(item.sold)}</td><td class="money-orange font-extrabold text-[#b44f00]">${safe(item.profit)}</td></tr>`).join('');
+      if (bestBody) bestBody.innerHTML = data.bestSellers.length ? data.bestSellers.map((item) => `<tr><td><strong>${safe(item.name)}</strong></td><td>${safe(item.sold)}</td><td class="money-orange font-extrabold text-[#9a4600]">${safe(item.profit)}</td></tr>`).join('') : '<tr><td colspan="3" class="py-8 text-center text-[#756862]">Belum ada penjualan pada periode ini.</td></tr>';
       window.dashboardPurchases = data.purchaseHistories || [];
       renderDashboardPurchases();
+      renderDashboardSales(data.recentSales || []);
       const profitBody = findPanel('Analisis Profit')?.querySelector('tbody');
-      if (profitBody) bestBody;
-      if (profitBody) profitBody.innerHTML = data.profits.map((item) => `<tr><td><strong>${safe(item.name)}</strong></td><td>${safe(item.sold)}</td><td>${safe(item.revenue)}</td><td class="money-green font-extrabold text-green-600">${safe(item.profit)}</td></tr>`).join('');
+      if (profitBody) profitBody.innerHTML = data.profits.length ? data.profits.map((item) => `<tr><td><strong>${safe(item.name)}</strong></td><td>${safe(item.sold)}</td><td>${safe(item.revenue)}</td><td class="money-green font-extrabold text-green-700">${safe(item.profit)}</td></tr>`).join('') : '<tr><td colspan="4" class="py-8 text-center text-[#756862]">Data profit belum tersedia untuk periode ini.</td></tr>';
     } catch (error) {
       notify(error.message, true);
     }
@@ -366,6 +405,16 @@
     if (!tbody) return;
     const rows = (window.dashboardPurchases || []).filter((item) => !dashboardPurchaseStatus || item.status === dashboardPurchaseStatus);
     tbody.innerHTML = rows.map((item) => `<tr><td><strong>${safe(item.supplier)}</strong></td><td>${safe(item.item)}</td><td>${safe(item.date)}</td><td><strong>${safe(item.totalText)}</strong></td><td><span class="tag ${tagClass(item.status)} inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase">${safe(item.status)}</span></td></tr>`).join('');
+  }
+  function renderDashboardSales(sales) {
+    const tbody = document.querySelector('[data-sales-report] tbody');
+    const counter = document.querySelector('[data-sales-count]');
+    if (counter) counter.textContent = `${sales.length} transaksi`;
+    if (!tbody) return;
+    tbody.innerHTML = sales.length ? sales.map((sale) => {
+      const items = sale.items.map((item) => `${safe(item.name)} (${item.quantity})`).join(', ');
+      return `<tr><td><strong class="text-blue-700">${safe(sale.code)}</strong></td><td>${items}</td><td>${safe(sale.paymentMethod)}</td><td>${safe(sale.date)}</td><td><strong>${safe(sale.totalText)}</strong></td><td><span class="tag inline-flex min-w-[58px] items-center justify-center rounded-full bg-green-100 px-2.5 py-1 text-[10px] font-black uppercase text-green-700">Selesai</span></td></tr>`;
+    }).join('') : '<tr><td colspan="6" class="py-8 text-center text-[#756862]">Belum ada transaksi penjualan pada periode ini.</td></tr>';
   }
   document.querySelector('[data-purchase-filter]')?.addEventListener('click', (event) => {
     const statuses = ['', 'Pending', 'Barang Datang', 'Selesai'];
@@ -390,12 +439,26 @@
   document.querySelectorAll('.panel-link').forEach((button) => button.addEventListener('click', () => {
     window.location.href = '/produk-kategori';
   }));
-  document.querySelectorAll('.segmented button').forEach((button) => {
+  document.querySelectorAll('[data-report-period]').forEach((button) => {
     button.addEventListener('click', () => {
-      document.querySelectorAll('.segmented button').forEach((item) => item.classList.remove('active'));
+      document.querySelectorAll('[data-report-period]').forEach((item) => item.classList.remove('active'));
       button.classList.add('active');
-      notify('Filter laporan: ' + button.textContent.trim());
+      dashboardPeriod = button.dataset.reportPeriod;
+      dashboardFrom = '';
+      dashboardTo = '';
+      document.querySelector('[data-date-filter]')?.reset();
+      loadDashboard();
     });
+  });
+  document.querySelector('[data-date-filter]')?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const values = new FormData(event.currentTarget);
+    dashboardFrom = String(values.get('from') || '');
+    dashboardTo = String(values.get('to') || '');
+    if (!dashboardFrom && !dashboardTo) return notify('Pilih tanggal laporan terlebih dahulu', true);
+    dashboardPeriod = 'custom';
+    document.querySelectorAll('[data-report-period]').forEach((item) => item.classList.remove('active'));
+    loadDashboard();
   });
   loadDashboard();
 

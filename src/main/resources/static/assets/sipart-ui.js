@@ -20,7 +20,7 @@
 
   function applySession(user) {
     document.body.dataset.sessionRole = user.role;
-    const label = user.role === 'Admin Gudang' ? 'System Gudang' : user.role === 'Admin Kasir' ? 'Kasir' : 'Owner';
+    const label = user.role;
     document.querySelectorAll('.brand-role').forEach((node) => { node.textContent = label; });
     document.querySelectorAll('.profile-name').forEach((node) => { node.textContent = user.name; });
     document.querySelectorAll('.profile > .avatar').forEach((node) => {
@@ -34,7 +34,55 @@
       const permission = user.permissions?.[pathPermission[path]];
       link.classList.toggle('hidden', !allowed.has(path) || !permission?.page);
     });
+    setupGlobalSearch(user);
     return user;
+  }
+
+  function setupMobileNavigation() {
+    const sidebar = document.querySelector('.sidebar');
+    const brand = sidebar?.querySelector('.brand');
+    const navigation = sidebar?.querySelector('.nav-list');
+    const logout = sidebar?.querySelector('.logout');
+    if (!sidebar || !brand || !navigation || !logout || brand.querySelector('[data-mobile-menu]')) return;
+
+    brand.classList.add('flex', 'items-center', 'justify-between', 'gap-3');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.dataset.mobileMenu = '';
+    button.className = 'grid h-10 w-10 place-items-center rounded-lg border border-[#e5c7b8] bg-white text-[#6f625c] transition hover:border-[#b44f00] hover:bg-[#fff3e9] hover:text-[#8f3d00] lg:hidden';
+    button.setAttribute('aria-label', 'Buka navigasi');
+    button.setAttribute('aria-expanded', 'false');
+    button.innerHTML = '<span class="grid gap-1"><span class="block h-0.5 w-5 bg-current"></span><span class="block h-0.5 w-5 bg-current"></span><span class="block h-0.5 w-5 bg-current"></span></span>';
+    brand.appendChild(button);
+    navigation.classList.add('hidden', 'lg:flex');
+    logout.classList.add('hidden', 'lg:flex');
+
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') !== 'true';
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open ? 'Tutup navigasi' : 'Buka navigasi');
+      navigation.classList.toggle('hidden', !open);
+      logout.classList.toggle('hidden', !open);
+    });
+  }
+
+  function setupGlobalSearch(user) {
+    const input = document.querySelector('.topbar .search input[type="search"]');
+    if (!input || input.dataset.globalSearchReady) return;
+    input.dataset.globalSearchReady = 'true';
+    const currentPath = window.location.pathname;
+    if (currentPath === '/produk-kategori') {
+      const query = new URLSearchParams(window.location.search).get('q');
+      if (query) input.value = query;
+      return;
+    }
+    if (!user.permissions?.products?.page) return;
+    input.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter') return;
+      event.preventDefault();
+      const query = input.value.trim();
+      window.location.href = '/produk-kategori' + (query ? '?q=' + encodeURIComponent(query) : '');
+    });
   }
 
   async function requireSession() {
@@ -116,6 +164,7 @@
     }).then((value) => value !== null);
   }
 
+  setupMobileNavigation();
   const ready = requireSession().catch(() => {
     window.location.replace('/login');
     return null;

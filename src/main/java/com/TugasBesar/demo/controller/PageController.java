@@ -1,22 +1,27 @@
-package com.TugasBesar.demo;
+package com.TugasBesar.demo.controller;
 
 import jakarta.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.TugasBesar.demo.domain.user.AppScope;
+import com.TugasBesar.demo.domain.user.User;
+import com.TugasBesar.demo.domain.user.UserFactory;
+import com.TugasBesar.demo.service.SipartService;
+
 @Controller
-public class AppPageController {
+public class PageController {
 
 	@GetMapping("/")
 	public String home(HttpSession session) {
-		SipartDataStore.AuthView user = currentUser(session);
+		SipartService.AuthView user = currentUser(session);
 		return user == null ? "redirect:/login" : "redirect:" + user.defaultPath();
 	}
 
 	@GetMapping("/login")
 	public String login(HttpSession session) {
-		SipartDataStore.AuthView user = currentUser(session);
+		SipartService.AuthView user = currentUser(session);
 		return user == null ? "forward:/login.html" : "redirect:" + user.defaultPath();
 	}
 
@@ -56,21 +61,26 @@ public class AppPageController {
 	}
 
 	private String page(HttpSession session, String file, String scope, String permissionKey) {
-		SipartDataStore.AuthView user = currentUser(session);
+		SipartService.AuthView user = currentUser(session);
 		if (user == null) return "redirect:/login";
-		SipartDataStore.PermissionSet permission = user.permissions().get(permissionKey);
-		if (!hasScope(user.role(), scope) || permission == null || !permission.page()) return "redirect:" + user.defaultPath();
+		SipartService.PermissionSet permission = user.permissions().get(permissionKey);
+		User roleUser = UserFactory.create(user.id(), user.name(), user.username(), user.email(), user.role());
+		if (!roleUser.canAccessScope(scope(scope)) || permission == null || !permission.page()) {
+			return "redirect:" + user.defaultPath();
+		}
 		return "forward:/" + file;
 	}
 
-	private boolean hasScope(String role, String scope) {
-		if ("owner".equals(scope)) return "Owner".equalsIgnoreCase(role);
-		if ("sales".equals(scope)) return "Admin Kasir".equalsIgnoreCase(role);
-		return "Owner".equalsIgnoreCase(role) || "Admin Gudang".equalsIgnoreCase(role);
+	private AppScope scope(String value) {
+		return switch (value) {
+			case "owner" -> AppScope.OWNER;
+			case "sales" -> AppScope.SALES;
+			default -> AppScope.INVENTORY;
+		};
 	}
 
-	private SipartDataStore.AuthView currentUser(HttpSession session) {
+	private SipartService.AuthView currentUser(HttpSession session) {
 		Object value = session.getAttribute("sipartUser");
-		return value instanceof SipartDataStore.AuthView user ? user : null;
+		return value instanceof SipartService.AuthView user ? user : null;
 	}
 }

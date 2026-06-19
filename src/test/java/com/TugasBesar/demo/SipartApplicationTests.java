@@ -18,7 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class DemoApplicationTests {
+class SipartApplicationTests {
 	private static final Pattern ID_PATTERN = Pattern.compile("\\\"id\\\":(\\d+)");
 	private final CookieManager cookies = new CookieManager(null, CookiePolicy.ACCEPT_ALL);
 	private final HttpClient http = HttpClient.newBuilder().cookieHandler(cookies).build();
@@ -130,6 +130,11 @@ class DemoApplicationTests {
 		assertStatus(400, failedSale);
 		login("admin@sipart.test", "Owner");
 		assertProductStock(10);
+		HttpResponse<String> dailyReport = request("GET", "/api/dashboard?period=daily", null);
+		assertStatus(200, dailyReport);
+		assertTrue(dailyReport.body().contains("\"period\":\"daily\""));
+		assertTrue(dailyReport.body().contains("Produk Integrasi"));
+		assertStatus(400, request("GET", "/api/dashboard?from=2026-06-20&to=2026-06-19", null));
 
 		HttpResponse<String> userResponse = request("POST", "/api/users", "{\"name\":\"User Integrasi\",\"role\":\"Kasir\",\"username\":\"user_integrasi\",\"email\":\"user@integrasi.test\"}");
 		assertStatus(201, userResponse);

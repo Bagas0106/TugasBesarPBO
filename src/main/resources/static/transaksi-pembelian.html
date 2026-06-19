@@ -36,7 +36,7 @@
               <span>Supplier</span>
             </a>
           
-            <a class="nav-item active flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5 bg-[#ff7800] text-[#2b1b11] shadow-sm hover:bg-[#ff7800] hover:text-[#2b1b11]" href="/transaksi-pembelian">
+            <a class="nav-item active flex min-h-11 items-center gap-3 rounded-lg px-3 text-[13px] font-semibold text-[#6f625c] no-underline transition hover:bg-orange-50 hover:text-[#b44f00] [&_img]:h-5 [&_img]:w-5 bg-[#ff7800] text-[#2b1b11] shadow-sm hover:bg-[#d95f00] hover:text-white" href="/transaksi-pembelian">
               <img src="assets/icons/Navigation/nav_transaksi_pembelian_selected.svg" alt="">
               <span>Transaksi Pembelian</span>
             </a>
@@ -313,7 +313,7 @@
     return `<span class="product-icon-mini grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#f4efec] [&_img]:h-6 [&_img]:w-6"><img src="${iconFor(iconName)}" alt=""></span>`;
   }
 
-  const activeButtonClasses = ['border-[#ff7800]', 'bg-[#ff7800]', 'text-white'];
+  const activeButtonClasses = ['border-[#ff7800]', 'bg-[#ff7800]', 'text-white', 'hover:bg-[#e56d00]', 'hover:text-white'];
   function setActiveInGroup(container, selected) {
     container.querySelectorAll('button').forEach((button) => {
       const isActive = button === selected;

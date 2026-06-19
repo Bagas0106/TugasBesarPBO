@@ -1,4 +1,4 @@
-package com.TugasBesar.demo;
+package com.TugasBesar.demo.config;
 
 import java.io.IOException;
 
@@ -11,8 +11,12 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.TugasBesar.demo.domain.user.User;
+import com.TugasBesar.demo.domain.user.UserFactory;
+import com.TugasBesar.demo.service.SipartService;
+
 @Configuration
-public class SipartWebConfig implements WebMvcConfigurer {
+public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new ApiRoleInterceptor())
@@ -25,23 +29,16 @@ public class SipartWebConfig implements WebMvcConfigurer {
 		public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
 			HttpSession session = request.getSession(false);
 			Object value = session == null ? null : session.getAttribute("sipartUser");
-			if (!(value instanceof SipartDataStore.AuthView user)) {
+			if (!(value instanceof SipartService.AuthView user)) {
 				response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Silakan login terlebih dahulu.");
 				return false;
 			}
 
 			String path = request.getRequestURI();
-			String role = user.role();
 			String menu = menuFor(path);
-			boolean allowed;
-			if (path.startsWith("/api/sales")) {
-				allowed = "Admin Kasir".equalsIgnoreCase(role);
-			} else if (path.startsWith("/api/users")) {
-				allowed = "Owner".equalsIgnoreCase(role);
-			} else {
-				allowed = "Owner".equalsIgnoreCase(role) || "Admin Gudang".equalsIgnoreCase(role);
-			}
-			SipartDataStore.PermissionSet permission = user.permissions().get(menu);
+			User roleUser = UserFactory.create(user.id(), user.name(), user.username(), user.email(), user.role());
+			boolean allowed = roleUser.canAccessMenu(menu);
+			SipartService.PermissionSet permission = user.permissions().get(menu);
 			if (allowed && permission != null) {
 				String method = request.getMethod();
 				allowed = switch (method) {

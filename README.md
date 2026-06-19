@@ -1,6 +1,35 @@
 # SIPART
 
-Aplikasi inventaris dan transaksi sparepart berbasis Spring Boot 4, Java 17, dan Tailwind CSS.
+Aplikasi inventaris dan transaksi sparepart berbasis Spring Boot 4, Java 17, Tailwind CSS, dan MySQL.
+
+Dokumentasi proyek:
+
+- [Struktur class dan package](docs/STRUKTUR_PROJECT.md)
+- [Alur penggunaan aplikasi](docs/ALUR_PENGGUNAAN.md)
+
+## Menyiapkan database
+
+1. Jalankan **Apache** dan **MySQL** dari XAMPP.
+2. Buka `http://localhost/phpmyadmin`.
+3. Buat database bernama `sipart_db` jika user MySQL tidak memiliki izin membuat database.
+
+Saat backend dimulai, tabel dan data awal otomatis dibuat oleh:
+
+- `src/main/resources/db/schema.sql`
+- `src/main/resources/db/data.sql`
+
+Konfigurasi bawaan menggunakan MySQL `root` tanpa password. Jika password MySQL berbeda, set environment variable sebelum menjalankan aplikasi:
+
+```powershell
+$env:DB_USERNAME="root"
+$env:DB_PASSWORD="password_mysql"
+```
+
+Untuk alamat database yang berbeda:
+
+```powershell
+$env:DB_URL="jdbc:mysql://localhost:3306/sipart_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Bangkok"
+```
 
 ## Menjalankan aplikasi
 
@@ -26,7 +55,7 @@ Jika port 8080 sedang dipakai, gunakan JAR pada port lain:
 
 ```powershell
 .\mvnw.cmd clean package
-java -jar target\demo-0.0.1-SNAPSHOT.jar --server.port=8082
+java -jar target\sipart.jar --server.port=8082
 ```
 
 Kemudian buka `http://localhost:8082`.
@@ -37,4 +66,4 @@ Kemudian buka `http://localhost:8082`.
 .\mvnw.cmd test
 ```
 
-Data aplikasi disimpan di memori untuk kebutuhan demo, sehingga kembali ke data awal setiap kali backend dimulai ulang.
+Data aplikasi tersimpan permanen di database `sipart_db` dan tidak kembali ke data awal ketika backend dimulai ulang. Tes otomatis menggunakan database H2 terpisah sehingga tidak mengubah data MySQL lokal.

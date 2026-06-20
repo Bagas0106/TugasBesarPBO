@@ -182,19 +182,12 @@
       </div>
       <div>
         <section class="panel mb-6 overflow-hidden rounded-lg border border-[#efc8b6] bg-white shadow-[0_10px_24px_rgba(104,64,36,0.07)]">
-          <div class="filterbar flex flex-wrap items-center gap-3 border-b border-[#efc8b6] p-4 [&_select]:h-10 [&_select]:rounded-lg [&_select]:border [&_select]:border-[#e8c8b8] [&_select]:bg-[#fffaf7] [&_select]:px-3 [&_select]:outline-none [&_select]:focus:border-orange-400">
-            <div class="select-group grid min-w-[112px] gap-1 rounded-md border border-[#efc8b6] bg-[#fffaf7] p-2 text-xs">
-              <select><option>Semua Kategori</option></select>
-              <select><option>Semua Status</option></select>
-            </div>
-            <span class="muted text-[#756862]">Menampilkan 1 - 10 dari 1,240 Produk</span>
-          </div>
           <div class="table-wrap w-full overflow-x-auto [&_table]:w-full [&_table]:min-w-[700px] [&_table]:border-collapse [&_th]:bg-[#f0ecea] [&_th]:px-5 [&_th]:py-3.5 [&_th]:text-left [&_th]:text-[11px] [&_th]:font-black [&_th]:uppercase [&_th]:text-[#67554d] [&_td]:border-b [&_td]:border-[#ecd7cc] [&_td]:px-5 [&_td]:py-3.5 [&_td]:align-middle [&_tbody_tr:nth-child(even)]:bg-[#faf8f7]">
             <table>
               <thead>
                 <tr><th>Nama Produk</th><th>Kategori</th><th>Harga Jual</th><th>Stok</th><th>Status</th><th>Aksi</th></tr>
               </thead>
-              <tbody>
+              <tbody id="product-table-body">
                 
                   <tr>
                     <td><strong>Oli Shell Advance AX7</strong><div class="sku text-[10px] text-[#756862]">SKU: OLI-SHL-001</div></td>
@@ -398,23 +391,19 @@
 
   let productsCache = [];
   let categoriesCache = [];
+  let activeCategoryFilter = '';
   const initialProductQuery = new URLSearchParams(window.location.search).get('q');
   if (initialProductQuery) document.querySelector('.topbar .search input').value = initialProductQuery;
   async function loadProducts() {
     try {
       const search = document.querySelector('.topbar .search input')?.value || '';
-      const selects = document.querySelectorAll('.filterbar select');
-      const category = selects[0]?.value || '';
-      const status = selects[1]?.value || '';
       const params = new URLSearchParams();
       if (search) params.set('q', search);
-      if (category && category !== 'Semua Kategori') params.set('category', category);
-      if (status && status !== 'Semua Status') params.set('status', status);
+      if (activeCategoryFilter) params.set('category', activeCategoryFilter);
       const [products, categories] = await Promise.all([api('/api/products' + (params.toString() ? '?' + params.toString() : '')), api('/api/categories')]);
       productsCache = products;
       categoriesCache = categories;
       renderProductMetrics(products);
-      renderCategoryFilter(categories, category);
       renderCategories(categories);
       renderCritical(products);
       renderProductTable(products);
@@ -431,16 +420,13 @@
     if (values[2]) values[2].textContent = critical;
     if (values[3]) values[3].textContent = active.toLocaleString('id-ID');
   }
-  function renderCategoryFilter(categories, selected) {
-    const select = document.querySelectorAll('.filterbar select')[0];
-    if (!select) return;
-    select.innerHTML = '<option>Semua Kategori</option>' + categories.map((item) => `<option value="${safe(item.name)}">${safe(item.name)}</option>`).join('');
-    if (selected) select.value = selected;
-  }
   function renderCategories(categories) {
     const grid = document.querySelector('.category-grid');
     if (!grid) return;
-    grid.innerHTML = categories.map((item) => `<article class="category-tile min-h-[102px] rounded-lg border border-[#efc8b6] bg-white p-4 transition hover:border-orange-400 hover:shadow-sm [&_img]:mb-2 [&_img]:h-6 [&_img]:w-6"><img src="${iconFor(item.icon)}" alt=""><div><strong>${safe(item.name)}</strong><span class="muted text-[#756862]">${item.count} Produk</span></div></article>`).join('');
+    grid.innerHTML = categories.map((item) => {
+      const selected = activeCategoryFilter.toLowerCase() === item.name.toLowerCase();
+      return `<button type="button" data-category-filter="${safe(item.name)}" aria-pressed="${selected}" class="category-tile min-h-[102px] rounded-lg border p-4 text-left transition focus:outline-none focus:ring-2 focus:ring-orange-300 [&_img]:mb-2 [&_img]:h-6 [&_img]:w-6 ${selected ? 'border-[#ff7800] bg-[#fff0e6] shadow-sm ring-1 ring-orange-200' : 'border-[#efc8b6] bg-white hover:border-orange-400 hover:bg-orange-50 hover:shadow-sm'}"><img src="${iconFor(item.icon)}" alt=""><span class="block"><strong class="block">${safe(item.name)}</strong><span class="mt-1 block text-sm text-[#756862]">${item.count} Produk</span></span></button>`;
+    }).join('');
   }
   function renderCritical(products) {
     const list = document.querySelector('.critical-list');
@@ -452,9 +438,9 @@
     }).join('') : '<div class="muted text-[#756862]">Tidak ada stok kritis.</div>';
   }
   function renderProductTable(products) {
-    const tbody = document.querySelector('.filterbar')?.closest('.panel')?.querySelector('tbody');
+    const tbody = document.querySelector('#product-table-body');
     if (!tbody) return;
-    tbody.innerHTML = products.map((item) => `
+    tbody.innerHTML = products.length ? products.map((item) => `
       <tr>
         <td><strong>${safe(item.name)}</strong><div class="sku text-[10px] text-[#756862]">SKU: ${safe(item.sku)}</div></td>
         <td><span class="tag gray inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase bg-stone-200 text-stone-700">${safe(item.category)}</span></td>
@@ -463,7 +449,7 @@
         <td><span class="tag ${tagClass(item.status)} inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase">${safe(item.status)}</span></td>
         <td><div class="actions flex items-center justify-end gap-2"><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5" data-edit-product="${item.id}" aria-label="Edit"><img src="${icons.edit}" alt=""></button><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5" data-delete-product="${item.id}" aria-label="Hapus"><img src="${icons.trash}" alt=""></button></div></td>
       </tr>
-    `).join('');
+    `).join('') : '<tr><td colspan="6" class="py-10 text-center text-[#756862]">Produk tidak ditemukan.</td></tr>';
   }
   document.querySelector('.page-title-row .primary-btn')?.addEventListener('click', async () => {
     const values = await SipartUI.form({
@@ -535,8 +521,14 @@
       notify(error.message, true);
     }
   });
+  document.querySelector('.category-grid')?.addEventListener('click', (event) => {
+    const tile = event.target.closest('[data-category-filter]');
+    if (!tile) return;
+    const category = tile.dataset.categoryFilter;
+    activeCategoryFilter = activeCategoryFilter === category ? '' : category;
+    loadProducts();
+  });
   document.querySelector('.topbar .search input')?.addEventListener('input', () => loadProducts());
-  document.querySelectorAll('.filterbar select').forEach((select) => select.addEventListener('change', loadProducts));
   loadProducts();
 
   </script>

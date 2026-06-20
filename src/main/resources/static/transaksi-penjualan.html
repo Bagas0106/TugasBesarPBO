@@ -84,10 +84,10 @@
             <input type="search" placeholder="Cari sparepart berdasarkan nama atau kode SKU...">
           </label>
           <div class="tabs flex gap-2 overflow-x-auto py-3">
-            <button class="tab active whitespace-nowrap rounded-lg border border-[#ead8cf] bg-white px-4 py-2.5 text-xs font-bold text-[#6f625c] hover:bg-[#e56d00] hover:text-white border-[#ff7800] bg-[#ff7800] text-white">Semua Produk</button>
-            <button class="tab whitespace-nowrap rounded-lg border border-[#ead8cf] bg-white px-4 py-2.5 text-xs font-bold text-[#6f625c] hover:bg-orange-50">Oli & Pelumas</button>
-            <button class="tab whitespace-nowrap rounded-lg border border-[#ead8cf] bg-white px-4 py-2.5 text-xs font-bold text-[#6f625c] hover:bg-orange-50">Suku Cadang Mesin</button>
-            <button class="tab whitespace-nowrap rounded-lg border border-[#ead8cf] bg-white px-4 py-2.5 text-xs font-bold text-[#6f625c] hover:bg-orange-50">Kelistrikan</button>
+            <button type="button" aria-pressed="true" class="tab active whitespace-nowrap rounded-lg border px-4 py-2.5 text-xs font-bold transition focus:outline-none focus:ring-2 focus:ring-orange-300">Semua Produk</button>
+            <button type="button" aria-pressed="false" class="tab whitespace-nowrap rounded-lg border px-4 py-2.5 text-xs font-bold transition focus:outline-none focus:ring-2 focus:ring-orange-300">Oli & Pelumas</button>
+            <button type="button" aria-pressed="false" class="tab whitespace-nowrap rounded-lg border px-4 py-2.5 text-xs font-bold transition focus:outline-none focus:ring-2 focus:ring-orange-300">Suku Cadang Mesin</button>
+            <button type="button" aria-pressed="false" class="tab whitespace-nowrap rounded-lg border px-4 py-2.5 text-xs font-bold transition focus:outline-none focus:ring-2 focus:ring-orange-300">Kelistrikan</button>
           </div>
           <div class="product-grid grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
             
@@ -137,12 +137,12 @@
             <div class="summary-row total flex items-center justify-between gap-4 py-1.5 text-xs mt-2 border-t border-[#ead8cf] pt-3 text-sm font-black"><span>Grand Total</span><strong class="money-orange font-extrabold text-[#b44f00]">Rp 49.950</strong></div>
             <p class="soft-label mt-6 text-[10px] font-black uppercase tracking-wide text-[#ff7800]">Metode Pembayaran</p>
             <div class="payment-grid mt-3 grid grid-cols-2 gap-3">
-            <button class="pay-btn inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-[#ff7800] bg-[#ff7800] px-3 font-bold text-white hover:bg-orange-600 [&_img]:h-4 [&_img]:w-4 active"><img src="assets/icons/Transaksi%20Penjualan/tunai.svg" alt=""> Tunai</button>
-            <button class="pay-btn inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-[#e7b89b] bg-white px-3 font-bold text-[#6f625c] hover:bg-orange-50 [&_img]:h-4 [&_img]:w-4"><img src="assets/icons/Transaksi%20Penjualan/qris.svg" alt=""> QRIS</button>
+            <button type="button" data-payment="Tunai" aria-pressed="true" class="pay-btn active inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border px-3 font-bold transition focus:outline-none focus:ring-2 focus:ring-orange-300 [&_img]:h-4 [&_img]:w-4"><img src="assets/icons/Transaksi%20Penjualan/tunai.svg" alt=""> Tunai</button>
+            <button type="button" data-payment="QRIS" aria-pressed="false" class="pay-btn inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border px-3 font-bold transition focus:outline-none focus:ring-2 focus:ring-orange-300 [&_img]:h-4 [&_img]:w-4"><img src="assets/icons/Transaksi%20Penjualan/qris.svg" alt=""> QRIS</button>
             </div>
-            <div class="mini-grid grid grid-cols-2 gap-3">
-              <label class="field flex flex-col gap-1.5 [&_label]:text-[11px] [&_label]:font-bold [&_input]:h-11 [&_input]:rounded-lg [&_input]:border [&_input]:border-[#e8c8b8] [&_input]:bg-[#fffaf7] [&_input]:px-3.5 [&_input]:outline-none [&_input]:focus:border-orange-400 [&_select]:h-11 [&_select]:rounded-lg [&_select]:border [&_select]:border-[#e8c8b8] [&_select]:bg-white [&_select]:px-3.5 [&_select]:outline-none [&_select]:focus:border-orange-400 [&_textarea]:min-h-24 [&_textarea]:rounded-lg [&_textarea]:border [&_textarea]:border-[#e8c8b8] [&_textarea]:bg-[#fffaf7] [&_textarea]:p-3.5 [&_textarea]:outline-none [&_textarea]:focus:border-orange-400"><span>Bayar</span><input value="Rp 50.000"></label>
-              <label class="field flex flex-col gap-1.5 [&_label]:text-[11px] [&_label]:font-bold [&_input]:h-11 [&_input]:rounded-lg [&_input]:border [&_input]:border-[#e8c8b8] [&_input]:bg-[#fffaf7] [&_input]:px-3.5 [&_input]:outline-none [&_input]:focus:border-orange-400 [&_select]:h-11 [&_select]:rounded-lg [&_select]:border [&_select]:border-[#e8c8b8] [&_select]:bg-white [&_select]:px-3.5 [&_select]:outline-none [&_select]:focus:border-orange-400 [&_textarea]:min-h-24 [&_textarea]:rounded-lg [&_textarea]:border [&_textarea]:border-[#e8c8b8] [&_textarea]:bg-[#fffaf7] [&_textarea]:p-3.5 [&_textarea]:outline-none [&_textarea]:focus:border-orange-400"><span>Kembalian</span><input value="Rp 50" readonly></label>
+            <div class="mini-grid mt-3 grid grid-cols-2 gap-3">
+              <label class="field flex flex-col gap-1.5 [&_label]:text-[11px] [&_label]:font-bold [&_input]:h-11 [&_input]:rounded-lg [&_input]:border [&_input]:border-[#e8c8b8] [&_input]:bg-[#fffaf7] [&_input]:px-3.5 [&_input]:outline-none [&_input]:focus:border-orange-400 [&_input:disabled]:cursor-not-allowed [&_input:disabled]:border-stone-200 [&_input:disabled]:bg-stone-100 [&_input:disabled]:text-stone-500 [&_select]:h-11 [&_select]:rounded-lg [&_select]:border [&_select]:border-[#e8c8b8] [&_select]:bg-white [&_select]:px-3.5 [&_select]:outline-none [&_select]:focus:border-orange-400 [&_textarea]:min-h-24 [&_textarea]:rounded-lg [&_textarea]:border [&_textarea]:border-[#e8c8b8] [&_textarea]:bg-[#fffaf7] [&_textarea]:p-3.5 [&_textarea]:outline-none [&_textarea]:focus:border-orange-400"><span>Bayar</span><input id="paid-input" value="Rp 0" inputmode="numeric" autocomplete="off"></label>
+              <label class="field flex flex-col gap-1.5 [&_label]:text-[11px] [&_label]:font-bold [&_input]:h-11 [&_input]:rounded-lg [&_input]:border [&_input]:border-[#e8c8b8] [&_input]:bg-[#fffaf7] [&_input]:px-3.5 [&_input]:outline-none [&_input]:focus:border-orange-400 [&_select]:h-11 [&_select]:rounded-lg [&_select]:border [&_select]:border-[#e8c8b8] [&_select]:bg-white [&_select]:px-3.5 [&_select]:outline-none [&_select]:focus:border-orange-400 [&_textarea]:min-h-24 [&_textarea]:rounded-lg [&_textarea]:border [&_textarea]:border-[#e8c8b8] [&_textarea]:bg-[#fffaf7] [&_textarea]:p-3.5 [&_textarea]:outline-none [&_textarea]:focus:border-orange-400"><span>Kembalian</span><input id="change-input" value="Rp 0" readonly></label>
             </div>
             <button class="primary-btn mt-4 w-full inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-[#ff7800] bg-[#ff7800] px-[18px] font-extrabold text-white shadow-[0_8px_18px_rgba(255,120,0,0.22)] transition hover:border-[#e56d00] hover:bg-[#e56d00] focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:cursor-not-allowed disabled:opacity-50"><img src="assets/icons/Transaksi%20Penjualan/prosestransaksi.svg" alt="" class="button-icon h-5 w-5"> Proses Transaksi</button>
           </div>
@@ -247,6 +247,8 @@
   let salesProducts = [];
   let cart = new Map();
   let activeCategory = 'Semua Produk';
+  let paymentMethod = 'Tunai';
+  let cartTotal = 0;
   async function loadSalesProducts() {
     try {
       salesProducts = await api('/api/sales/products');
@@ -280,15 +282,58 @@
     const subtotal = items.reduce((sum, line) => sum + line.product.price * line.quantity, 0);
     const tax = Math.round(subtotal * 0.11);
     const total = subtotal + tax;
+    cartTotal = total;
     const rows = document.querySelectorAll('.summary-row strong');
     if (rows[0]) rows[0].textContent = money(subtotal);
     if (rows[1]) rows[1].textContent = money(tax);
     if (rows[2]) rows[2].textContent = money(total);
-    const paidInput = document.querySelector('.mini-grid input:not([readonly])');
-    const changeInput = document.querySelector('.mini-grid input[readonly]');
-    const paid = numberOnly(paidInput?.value) || total;
-    if (paidInput && !paidInput.value) paidInput.value = money(total);
-    if (changeInput) changeInput.value = money(Math.max(0, paid - total));
+    updatePaymentFields(true);
+  }
+  const paymentActiveClasses = ['border-[#ff7800]', 'bg-[#ff7800]', 'text-white', 'shadow-[0_6px_14px_rgba(255,120,0,0.2)]', 'hover:bg-[#e56d00]', 'hover:text-white'];
+  const paymentInactiveClasses = ['border-[#e7b89b]', 'bg-white', 'text-[#6f625c]', 'hover:border-orange-400', 'hover:bg-orange-50', 'hover:text-[#a34908]'];
+  const tabActiveClasses = ['border-[#ff7800]', 'bg-[#ff7800]', 'text-white', 'hover:bg-[#e56d00]', 'hover:text-white'];
+  const tabInactiveClasses = ['border-[#ead8cf]', 'bg-white', 'text-[#6f625c]', 'hover:border-orange-400', 'hover:bg-orange-50', 'hover:text-[#a34908]'];
+  function updatePaymentFields(resetPaid = false) {
+    const paidInput = document.querySelector('#paid-input');
+    const changeInput = document.querySelector('#change-input');
+    const processButton = document.querySelector('.cart-footer .primary-btn');
+    if (!paidInput || !changeInput) return;
+    const qris = paymentMethod === 'QRIS';
+    paidInput.disabled = qris;
+    paidInput.classList.toggle('cursor-not-allowed', qris);
+    paidInput.classList.toggle('border-stone-200', qris);
+    paidInput.classList.toggle('bg-stone-100', qris);
+    paidInput.classList.toggle('text-stone-500', qris);
+    paidInput.title = qris ? 'Nominal QRIS mengikuti grand total' : '';
+    if (qris || resetPaid) paidInput.value = money(cartTotal);
+    const paid = qris ? cartTotal : numberOnly(paidInput.value);
+    changeInput.value = money(qris ? 0 : Math.max(0, paid - cartTotal));
+    if (processButton) processButton.disabled = cart.size === 0 || paid < cartTotal;
+  }
+  function setPaymentMethod(method) {
+    paymentMethod = method;
+    document.querySelectorAll('.pay-btn').forEach((button) => {
+      const selected = button.dataset.payment === method;
+      button.classList.toggle('active', selected);
+      button.setAttribute('aria-pressed', String(selected));
+      [...paymentActiveClasses, ...paymentInactiveClasses].forEach((className) => button.classList.remove(className));
+      (selected ? paymentActiveClasses : paymentInactiveClasses).forEach((className) => button.classList.add(className));
+      const icon = button.querySelector('img');
+      icon?.classList.toggle('brightness-0', true);
+      icon?.classList.toggle('invert', selected);
+      icon?.classList.toggle('opacity-60', !selected);
+    });
+    updatePaymentFields(true);
+  }
+  function setSalesCategory(selected) {
+    document.querySelectorAll('.tab').forEach((button) => {
+      const active = button === selected;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+      [...tabActiveClasses, ...tabInactiveClasses].forEach((className) => button.classList.remove(className));
+      (active ? tabActiveClasses : tabInactiveClasses).forEach((className) => button.classList.add(className));
+    });
+    activeCategory = selected?.textContent.trim() || 'Semua Produk';
   }
   document.addEventListener('click', (event) => {
     const add = event.target.closest('[data-add-cart]');
@@ -327,10 +372,9 @@
   }
   document.querySelector('.cart-footer .primary-btn')?.addEventListener('click', async () => {
     const items = [...cart.values()].map((line) => ({ productId: line.product.id, quantity: line.quantity }));
-    const activePay = document.querySelector('.pay-btn.active')?.textContent.trim() || 'Tunai';
-    const paid = numberOnly(document.querySelector('.mini-grid input:not([readonly])')?.value);
+    const paid = paymentMethod === 'QRIS' ? cartTotal : numberOnly(document.querySelector('#paid-input')?.value);
     try {
-      const sale = await api('/api/sales', { method: 'POST', body: JSON.stringify({ items, paymentMethod: activePay, paid }) });
+      const sale = await api('/api/sales', { method: 'POST', body: JSON.stringify({ items, paymentMethod, paid }) });
       notify('Transaksi berhasil: ' + sale.code);
       if (await SipartUI.confirm({ title: 'Transaksi berhasil', message: `${sale.code} telah tersimpan. Cetak struk sekarang?`, confirmLabel: 'Cetak Struk', danger: false })) printReceipt(sale);
       cart.clear();
@@ -340,15 +384,20 @@
     }
   });
   document.querySelectorAll('.tab').forEach((tab) => tab.addEventListener('click', () => {
-    setActiveInGroup(tab.closest('.tabs'), tab);
-    activeCategory = tab.textContent.trim();
+    setSalesCategory(tab);
     renderSalesProducts();
   }));
   document.querySelectorAll('.pay-btn').forEach((button) => button.addEventListener('click', () => {
-    setActiveInGroup(button.closest('.payment-grid'), button);
+    setPaymentMethod(button.dataset.payment);
   }));
   document.querySelector('.sales-search input')?.addEventListener('input', renderSalesProducts);
-  document.querySelector('.mini-grid input:not([readonly])')?.addEventListener('input', renderCart);
+  document.querySelector('#paid-input')?.addEventListener('input', () => updatePaymentFields());
+  document.querySelector('#paid-input')?.addEventListener('blur', (event) => {
+    if (!event.target.disabled) event.target.value = money(numberOnly(event.target.value));
+    updatePaymentFields();
+  });
+  setSalesCategory(document.querySelector('.tab.active'));
+  setPaymentMethod('Tunai');
   loadSalesProducts();
 
   </script>

@@ -48,6 +48,10 @@ public class WebConfig implements WebMvcConfigurer {
 					case "POST" -> isActionPath(path) ? permission.edit() : permission.add();
 					default -> permission.page();
 				};
+				if (path.startsWith("/api/stock")) {
+					if ("POST".equals(method)) allowed = "Admin Gudang".equals(user.role());
+					if ("PUT".equals(method) || "PATCH".equals(method)) allowed = "Owner".equals(user.role());
+				}
 			}
 			if (!allowed) {
 				response.sendError(HttpServletResponse.SC_FORBIDDEN, "Role tidak memiliki akses ke fitur ini.");

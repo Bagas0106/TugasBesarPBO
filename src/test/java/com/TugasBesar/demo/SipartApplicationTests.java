@@ -52,6 +52,13 @@ class SipartApplicationTests {
 		login("gudang@sipart.test", "Admin Gudang");
 		assertStatus(200, request("GET", "/dashboard", null));
 		assertStatus(200, request("GET", "/api/products", null));
+		assertStatus(201, request("POST", "/api/stock", "{\"productId\":1,\"physicalStock\":10}"));
+		assertStatus(403, request("PUT", "/api/stock/1", "{\"physicalStock\":10}"));
+		HttpResponse<String> purchasePage = request("GET", "/transaksi-pembelian", null);
+		assertStatus(200, purchasePage);
+		assertTrue(!purchasePage.body().contains("Simpan Pemeriksaan"));
+		assertTrue(purchasePage.body().contains("data-confirm-purchase"));
+		assertStatus(403, request("DELETE", "/api/purchases/9201", null));
 		assertStatus(302, request("GET", "/manajemen-user", null));
 		assertStatus(403, request("GET", "/api/users", null));
 
@@ -90,9 +97,17 @@ class SipartApplicationTests {
 		assertTrue(categoryUpdate.body().contains("INTEGRASI BARU"));
 		assertStatus(204, request("DELETE", "/api/categories/" + categoryId, null));
 
+		assertStatus(403, request("POST", "/api/stock", "{\"productId\":" + productId + ",\"physicalStock\":9}"));
+		login("gudang@sipart.test", "Admin Gudang");
 		HttpResponse<String> stockCheck = request("POST", "/api/stock", "{\"productId\":" + productId + ",\"physicalStock\":9}");
 		assertStatus(201, stockCheck);
 		assertTrue(stockCheck.body().contains("DIFFERENCE"));
+		int stockCheckId = idFrom(stockCheck);
+		assertStatus(403, request("PUT", "/api/stock/" + stockCheckId, "{\"physicalStock\":9}"));
+		login("admin@sipart.test", "Owner");
+		HttpResponse<String> stockUpdate = request("PUT", "/api/stock/" + stockCheckId, "{\"physicalStock\":9}");
+		assertStatus(200, stockUpdate);
+		assertTrue(stockUpdate.body().contains("\"physicalStock\":9"));
 
 		HttpResponse<String> supplierResponse = request("POST", "/api/suppliers", "{\"name\":\"Supplier Integrasi\",\"pic\":\"Dina\",\"phone\":\"081200000000\"}");
 		assertStatus(201, supplierResponse);
@@ -110,6 +125,7 @@ class SipartApplicationTests {
 		assertStatus(201, purchaseResponse);
 		int purchaseId = idFrom(purchaseResponse);
 
+		login("gudang@sipart.test", "Admin Gudang");
 		HttpResponse<String> inspection = request("POST", "/api/purchases/" + purchaseId + "/inspect", "{\"physicalQuantity\":3,\"note\":\"Satu item rusak\"}");
 		assertStatus(200, inspection);
 		assertTrue(inspection.body().contains("\"difference\":-1"));

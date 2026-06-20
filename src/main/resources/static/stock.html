@@ -136,7 +136,7 @@
     </article>
   
     </div>
-    <section class="panel mb-6 overflow-hidden rounded-lg border border-[#efc8b6] bg-white shadow-[0_10px_24px_rgba(104,64,36,0.07)]">
+    <section data-stock-input-panel class="panel mb-6 hidden overflow-hidden rounded-lg border border-[#efc8b6] bg-white shadow-[0_10px_24px_rgba(104,64,36,0.07)]">
       <div class="panel-header soft flex min-h-16 items-center justify-between gap-4 border-b border-[#efc8b6] px-5 sm:px-6 [&_h3]:font-bold bg-[#fff0e7]">
         <h3>Input Stock Berkala</h3>
         <strong class="money-orange font-extrabold text-[#b44f00]">ID: SO-202311-001</strong>
@@ -305,6 +305,7 @@
 
   let stockProducts = [];
   let stockChecksCache = [];
+  let stockRole = '';
   async function loadStock() {
     try {
       const [products, checks, suppliers] = await Promise.all([api('/api/products'), api('/api/stock'), api('/api/suppliers')]);
@@ -347,7 +348,15 @@
     const tbody = panel?.querySelector('tbody');
     const search = panel?.querySelector('.search input')?.value?.toLowerCase() || '';
     if (!tbody) return;
-    tbody.innerHTML = checks.filter((item) => item.name.toLowerCase().includes(search)).map((item) => `<tr><td><strong>${safe(item.name)}</strong><div class="sku text-[10px] text-[#756862]">${safe(item.sku)}</div></td><td>${item.systemStock} Unit</td><td>${item.physicalStock ?? '--'} Unit</td><td class="${(item.difference || 0) < 0 ? 'number-red font-extrabold text-red-600' : ''}">${item.difference ?? '--'}</td><td><span class="tag ${tagClass(item.status)} inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase">${safe(item.status)}</span></td><td><button class="icon-btn grid h-9 w-9 place-items-center rounded-lg text-[#ff7800] hover:bg-orange-50 [&_img]:h-5 [&_img]:w-5" aria-label="Menu">...</button></td></tr>`).join('');
+    tbody.innerHTML = checks.filter((item) => item.name.toLowerCase().includes(search)).map((item) => {
+      const opname = stockRole === 'Owner'
+        ? `<input type="number" min="0" value="${item.physicalStock ?? ''}" data-stock-value="${item.id}" aria-label="Jumlah stock opname ${safe(item.name)}" class="h-10 w-24 rounded-lg border border-[#e7c7b6] bg-[#fffaf7] px-3 text-sm font-bold outline-none transition focus:border-[#ff7800] focus:ring-2 focus:ring-orange-100">`
+        : `${item.physicalStock ?? '--'} Unit`;
+      const action = stockRole === 'Owner'
+        ? `<button type="button" data-save-stock="${item.id}" class="grid h-9 w-9 place-items-center rounded-lg border border-orange-200 bg-orange-50 transition hover:border-orange-400 hover:bg-orange-100 focus:outline-none focus:ring-2 focus:ring-orange-200" aria-label="Simpan stock opname ${safe(item.name)}" title="Simpan"><img src="assets/icons/Manajemen%20User%2C%20Dashboard/simpan.svg" alt="" class="h-4 w-4"></button>`
+        : '<span class="text-stone-400">-</span>';
+      return `<tr><td><strong>${safe(item.name)}</strong><div class="sku text-[10px] text-[#756862]">${safe(item.sku)}</div></td><td>${item.systemStock} Unit</td><td>${opname}</td><td class="${(item.difference || 0) < 0 ? 'number-red font-extrabold text-red-600' : ''}">${item.difference ?? '--'}</td><td><span class="tag ${tagClass(item.status)} inline-flex min-w-[58px] items-center justify-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase">${safe(item.status)}</span></td><td>${action}</td></tr>`;
+    }).join('');
   }
   document.querySelectorAll('.stock-form select')[1]?.addEventListener('change', updateSystemStock);
   document.querySelector('.stock-form .ghost-btn')?.addEventListener('click', () => {
@@ -368,8 +377,30 @@
       notify(error.message, true);
     }
   });
+  findPanel('Perbandingan Stock')?.addEventListener('click', async (event) => {
+    const button = event.target.closest('[data-save-stock]');
+    if (!button || stockRole !== 'Owner') return;
+    const id = Number(button.dataset.saveStock);
+    const input = document.querySelector(`[data-stock-value="${id}"]`);
+    const physicalStock = input?.value === '' ? null : Number(input?.value);
+    if (!Number.isInteger(physicalStock) || physicalStock < 0) return notify('Jumlah stock opname tidak valid.', true);
+    button.disabled = true;
+    try {
+      await api('/api/stock/' + id, { method: 'PUT', body: JSON.stringify({ physicalStock }) });
+      notify('Jumlah stock opname diperbarui');
+      await loadStock();
+    } catch (error) {
+      notify(error.message, true);
+    } finally {
+      button.disabled = false;
+    }
+  });
   findPanel('Perbandingan Stock')?.querySelector('.search input')?.addEventListener('input', () => renderStockRows(stockChecksCache));
-  loadStock();
+  SipartSession.ready.then((user) => {
+    stockRole = user?.role || '';
+    document.querySelector('[data-stock-input-panel]')?.classList.toggle('hidden', stockRole !== 'Admin Gudang');
+    loadStock();
+  });
 
   </script>
   </body>

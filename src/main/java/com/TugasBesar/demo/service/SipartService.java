@@ -277,6 +277,38 @@ public class SipartService {
 				.orElseThrow(() -> notFound("Stock opname tidak ditemukan."));
 	}
 
+	@Transactional
+	public StockCheckView updateStockCheck(int id, StockOpnameUpdateRequest request) {
+		if (request.physicalStock() == null || request.physicalStock() < 0) {
+			throw badRequest("Jumlah stock opname wajib diisi.");
+		}
+		StockOpnameTarget target = jdbc.query("""
+				SELECT so.product_id, so.item_name, so.sku, so.system_stock,
+				       COALESCE(p.minimum_stock, 0) AS minimum_stock
+				FROM stock_opnames so
+				LEFT JOIN products p ON p.id = so.product_id
+				WHERE so.id = ?
+				""", (rs, row) -> new StockOpnameTarget(
+				nullableInteger(rs, "product_id"), rs.getString("item_name"), rs.getString("sku"),
+				rs.getInt("system_stock"), rs.getInt("minimum_stock")), id).stream().findFirst()
+				.orElseThrow(() -> notFound("Stock opname tidak ditemukan."));
+		StockOpname opname = new StockOpname(
+				id, target.name(), target.sku(), target.systemStock(), request.physicalStock());
+		jdbc.update("""
+				UPDATE stock_opnames
+				SET physical_stock = ?, difference = ?, status = ?, checked_at = CURRENT_TIMESTAMP
+				WHERE id = ?
+				""", request.physicalStock(), opname.difference(), opname.status(), id);
+		if (target.productId() != null) {
+			jdbc.update("""
+					UPDATE products SET stock = ?, status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?
+					""", request.physicalStock(), status(request.physicalStock(), target.minimumStock()),
+					target.productId());
+		}
+		return stockChecks(null, null).stream().filter(check -> check.id() == id).findFirst()
+				.orElseThrow(() -> notFound("Stock opname tidak ditemukan."));
+	}
+
 	// Supplier management and activity history
 	@Transactional(readOnly = true)
 	public List<Supplier> suppliers() {
@@ -1014,6 +1046,7 @@ public class SipartService {
 	public record SupplierRequest(String name, String pic, String phone, String category, String address, String email) {}
 	public record SupplierUpdateRequest(String name, String pic, String phone, String status, String category, String address, String email) {}
 	public record StockOpnameRequest(Integer productId, Integer physicalStock) {}
+	public record StockOpnameUpdateRequest(Integer physicalStock) {}
 	public record PurchaseRequest(String supplier, String item, String category, Integer quantity, Long unitPrice) {}
 	public record InspectionRequest(Integer physicalQuantity, String note) {}
 	public record SaleItemRequest(Integer productId, Integer quantity) {}
@@ -1049,6 +1082,7 @@ public class SipartService {
 	public record ProfitRow(String name, String sold, String revenue, String profit) {}
 	public record StockCheckView(int id, String name, String sku, int systemStock,
 			Integer physicalStock, Integer difference, String status) {}
+	private record StockOpnameTarget(Integer productId, String name, String sku, int systemStock, int minimumStock) {}
 	public record PurchaseView(int id, String code, String supplier, String item, String category,
 			int quantity, Integer physicalQuantity, Integer difference, String inspectionNote,
 			long unitPrice, long total, String totalText, String status, String date) {}
